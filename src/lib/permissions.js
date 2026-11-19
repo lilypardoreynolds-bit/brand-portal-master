@@ -70,6 +70,11 @@ export const PERMISSION_SECTIONS = [
     pages: ["TaxCompliance", "AgencyCommission", "BrandExpenses"],
   },
   {
+    key: "data_entry",
+    label: "Data Entry (Channel Reports & Sample Shipments)",
+    pages: ["ChannelReports", "SampleShipments"],
+  },
+  {
     key: "settings",
     label: "Settings",
     pages: ["Settings"],
