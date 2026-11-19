@@ -320,7 +320,7 @@ export default function TransactionFormDialog({ open, onClose, onSubmit, editing
 
         <DialogFooter>
           <Button variant="outline" onClick={onClose}>Cancel</Button>
-          <Button onClick={handleSubmit} disabled={saving} className="bg-[#78AF86] hover:bg-[#5d8f6b] gap-1.5">
+          <Button onClick={handleSubmit} disabled={saving} className="bg-[var(--brand)] hover:bg-[var(--brand-dark)] gap-1.5">
             {saving && <Loader2 className="h-4 w-4 animate-spin" />}
             {editing ? "Update" : "Create"} Transaction
           </Button>
