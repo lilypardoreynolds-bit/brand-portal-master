@@ -12,7 +12,7 @@ import LedgerTimeline from "@/components/ledger/LedgerTimeline";
 import LedgerFilters from "@/components/ledger/LedgerFilters";
 import LedgerReports from "@/components/ledger/LedgerReports";
 import TransactionFormDialog from "@/components/ledger/TransactionFormDialog";
-import { poToLedgerTransactions, costCenterToLedgerTransactions } from "@/lib/ledgerCalc";
+import { poToLedgerTransactions, costCenterToLedgerTransactions, invoiceRevenueToLedgerTransactions } from "@/lib/ledgerCalc";
 import LandedCostBreakdown from "@/components/ledger/LandedCostBreakdown";
 import { exportProductLedgerPDF } from "@/lib/exportLedgerPDF";
 import { useToast } from "@/components/ui/use-toast";
@@ -60,11 +60,26 @@ export default function ProductLedger() {
     initialData: [],
   });
 
+  const { data: paidInvoices = [] } = useQuery({
+    queryKey: ["paid_invoices_for_ledger", selectedProductId],
+    queryFn: () => base44.entities.Invoice.filter({ payment_status: "Paid" }),
+    enabled: !!selectedProductId,
+    initialData: [],
+  });
+
+  const { data: orderItems = [] } = useQuery({
+    queryKey: ["order_items_for_ledger", selectedProductId],
+    queryFn: () => base44.entities.OrderItem.filter({ product_id: selectedProductId }),
+    enabled: !!selectedProductId,
+    initialData: [],
+  });
+
   const allTransactions = useMemo(() => {
     const poTxns = poToLedgerTransactions(purchaseOrders, selectedProductId);
     const ccTxns = costCenterToLedgerTransactions(costCenterEntries);
-    return [...transactions, ...poTxns, ...ccTxns];
-  }, [transactions, purchaseOrders, costCenterEntries, selectedProductId]);
+    const invTxns = invoiceRevenueToLedgerTransactions(paidInvoices, orderItems, selectedProductId);
+    return [...transactions, ...poTxns, ...ccTxns, ...invTxns];
+  }, [transactions, purchaseOrders, costCenterEntries, paidInvoices, orderItems, selectedProductId]);
 
   const filteredTxns = useMemo(() => {
     return allTransactions.filter((t) => {
