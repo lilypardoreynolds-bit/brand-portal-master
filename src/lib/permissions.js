@@ -71,8 +71,8 @@ export const PERMISSION_SECTIONS = [
   },
   {
     key: "data_entry",
-    label: "Data Entry (Channel Reports & Sample Shipments)",
-    pages: ["ChannelReports", "SampleShipments"],
+    label: "Data Entry (Channel Reports, Sample Shipments & Marketing Allocations)",
+    pages: ["ChannelReports", "SampleShipments", "MarketingAllocations"],
   },
   {
     key: "settings",
