@@ -169,7 +169,7 @@ export default function ProductLedger() {
             Download PDF
           </Button>
           <Button
-            className="gap-1.5 bg-[#78AF86] hover:bg-[#5d8f6b]"
+            className="gap-1.5 bg-[var(--brand)] hover:bg-[var(--brand-dark)]"
             disabled={!selectedProductId}
             onClick={() => { setEditing(null); setShowForm(true); }}
           >
