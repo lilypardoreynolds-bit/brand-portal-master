@@ -17,7 +17,7 @@ import { LanguageProvider, useLanguage } from "@/components/i18n/LanguageContext
 import { useAuth } from "@/lib/AuthContext";
 import { LANGUAGES } from "@/components/i18n/translations";
 import { useAppSettings, darken } from "@/lib/appSettings";
-import { Inbox } from "lucide-react";
+import { Inbox, Gift } from "lucide-react";
 
 const MARKETING_PAGES = [
   "MarketingHub", "MarketingWebsite", "MarketingInstagram", "MarketingTikTok",
@@ -99,6 +99,7 @@ const getNavGroups = (t) => [
     items: [
       { name: "Channel Reports", icon: Inbox, page: "ChannelReports", sectionKey: "data_entry" },
       { name: "Sample Shipments", icon: Truck, page: "SampleShipments", sectionKey: "data_entry" },
+      { name: "Marketing Allocations", icon: Gift, page: "MarketingAllocations", sectionKey: "data_entry" },
     ]
   },
   {
