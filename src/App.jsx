@@ -11,6 +11,8 @@ import PurchaseOrders from '@/pages/PurchaseOrders';
 import ProductLedger from '@/pages/ProductLedger';
 import CostCenter from '@/pages/CostCenter';
 import UserManagement from '@/pages/UserManagement';
+import ChannelReports from '@/pages/ChannelReports';
+import SampleShipments from '@/pages/SampleShipments';
 import PermissionGate from '@/components/PermissionGate';
 
 const { Pages, Layout, mainPage } = pagesConfig;
@@ -72,6 +74,16 @@ const AuthenticatedApp = () => {
       <Route path="/CostCenter" element={
         <LayoutWrapper currentPageName="CostCenter">
           <PermissionGate page="CostCenter"><CostCenter /></PermissionGate>
+        </LayoutWrapper>
+      } />
+      <Route path="/ChannelReports" element={
+        <LayoutWrapper currentPageName="ChannelReports">
+          <PermissionGate page="ChannelReports"><ChannelReports /></PermissionGate>
+        </LayoutWrapper>
+      } />
+      <Route path="/SampleShipments" element={
+        <LayoutWrapper currentPageName="SampleShipments">
+          <PermissionGate page="SampleShipments"><SampleShipments /></PermissionGate>
         </LayoutWrapper>
       } />
       <Route path="/UserManagement" element={
