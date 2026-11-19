@@ -69,6 +69,50 @@
       "default": 0,
       "description": "quantity x landed_unit_cost"
     },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Shipping / label cost for sending this consumption (e.g. creator sample). Posted to ledger as Marketing expense."
+    },
+    "total_cost_with_shipping": {
+      "type": "number",
+      "default": 0,
+      "description": "total_value + shipping_cost"
+    },
+    "source_channel": {
+      "type": "string",
+      "description": "Where the request came from, e.g. Trybe, Manual, TikTok Shop"
+    },
+    "creator_name": {
+      "type": "string",
+      "description": "Creator / influencer who received the sample"
+    },
+    "creator_handle": {
+      "type": "string",
+      "description": "Creator social handle"
+    },
+    "influencer_id": {
+      "type": "string",
+      "description": "Linked Influencer record ID (optional)"
+    },
+    "order_reference": {
+      "type": "string",
+      "description": "Shopify order number or other reference"
+    },
+    "tracking_number": {
+      "type": "string"
+    },
+    "ledger_transaction_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ledger entries created by this consumption (product cost + shipping)"
+    },
+    "movement_id": {
+      "type": "string",
+      "description": "InventoryMovement created by this consumption"
+    },
     "notes": {
       "type": "string"
     },
