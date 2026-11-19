@@ -5,18 +5,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAppSettings } from "@/lib/appSettings";
 
 const DEFAULT = {
   product_id: "", product_name: "", supplier_id: "", supplier_name: "",
   sku: "", measurements: "", barcode: "", notes: "",
   on_hand: 0, current_stock: 0, min_stock_level: 0, max_stock_level: 0,
-  warehouse_location: "", unit_cost: 0,
+  warehouse: "Own Warehouse", warehouse_location: "", unit_cost: 0,
   last_updated: new Date().toISOString().split("T")[0]
 };
 
 export default function InventoryFormDialog({ open, onClose, item, onSave, products = [], suppliers = [] }) {
   const [form, setForm] = useState(DEFAULT);
   const [saving, setSaving] = useState(false);
+  const { warehouses } = useAppSettings();
 
   useEffect(() => {
     setForm(item ? { ...DEFAULT, ...item } : DEFAULT);
@@ -30,7 +32,8 @@ export default function InventoryFormDialog({ open, onClose, item, onSave, produ
     set("product_name", product?.name || "");
     set("sku", product?.sku || "");
     if (!item) {
-      set("unit_cost", product?.retail_price || 0);
+      // Inventory value should use cost, not selling price
+      set("unit_cost", (product?.manufacturing_cost || 0) + (product?.packaging_cost || 0) + (product?.shipping_cost || 0) + (product?.import_duties_cost || 0));
     }
   };
 
@@ -122,15 +125,14 @@ export default function InventoryFormDialog({ open, onClose, item, onSave, produ
               <Input type="number" min="0" step="0.01" value={form.unit_cost} onChange={e => set("unit_cost", Number(e.target.value))} className="mt-1" />
             </div>
             <div>
-              <Label>Location</Label>
-              <Select value={form.warehouse_location || "none"} onValueChange={v => set("warehouse_location", v === "none" ? "" : v)}>
-                <SelectTrigger className="mt-1"><SelectValue placeholder="Select location..." /></SelectTrigger>
+              <Label>Warehouse</Label>
+              <Select value={form.warehouse || "Own Warehouse"} onValueChange={v => set("warehouse", v)}>
+                <SelectTrigger className="mt-1"><SelectValue placeholder="Select warehouse..." /></SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="none">— None —</SelectItem>
-                  <SelectItem value="Warehouse">Warehouse</SelectItem>
-                  <SelectItem value="Amazon FBA">Amazon FBA</SelectItem>
+                  {warehouses.map(w => <SelectItem key={w} value={w}>{w}</SelectItem>)}
                 </SelectContent>
               </Select>
+              <Input value={form.warehouse_location || ""} onChange={e => set("warehouse_location", e.target.value)} placeholder="Bin / shelf (optional)" className="mt-2" />
             </div>
           </div>
 
