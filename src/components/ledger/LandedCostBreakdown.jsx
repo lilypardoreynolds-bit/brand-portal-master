@@ -26,7 +26,7 @@ export default function LandedCostBreakdown({ transactions, productId }) {
     <Card className="border-slate-200">
       <CardHeader className="pb-2">
         <CardTitle className="text-sm font-semibold flex items-center gap-2">
-          <Calculator className="h-4 w-4 text-[#78AF86]" />
+          <Calculator className="h-4 w-4 text-[var(--brand)]" />
           Landed Cost Breakdown
         </CardTitle>
       </CardHeader>
