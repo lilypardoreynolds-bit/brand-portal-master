@@ -17,6 +17,9 @@ import MovementsTable from "@/components/inventory/MovementsTable";
 import TransferDialog from "@/components/inventory/TransferDialog";
 import ConsumptionFormDialog from "@/components/inventory/ConsumptionFormDialog";
 import ConsumptionTable from "@/components/inventory/ConsumptionTable";
+import { useAppSettings } from "@/lib/appSettings";
+import { recordConsumption } from "@/lib/recordConsumption";
+import { useAuth } from "@/lib/AuthContext";
 
 export default function InventoryPage() {
   const isAdmin = useIsAdmin();
@@ -28,6 +31,8 @@ export default function InventoryPage() {
   const [recalculating, setRecalculating] = useState(false);
   const [consumeDialog, setConsumeDialog] = useState(false);
   const [warehouseFilter, setWarehouseFilter] = useState("all");
+  const { warehouses } = useAppSettings();
+  const { user } = useAuth();
 
   const { data: inventory = [] } = useQuery({
     queryKey: ["inventory"],
@@ -185,78 +190,14 @@ export default function InventoryPage() {
   });
 
   const doConsume = useMutation({
-    mutationFn: async (form) => {
-      const today = form.date;
-      const invItem = inventory.find(i => i.id === form.inventory_id);
-      if (!invItem) throw new Error("Inventory item not found");
-
-      // 1. Reduce inventory on_hand
-      const newOnHand = Math.max(0, (invItem.on_hand ?? 0) - form.quantity);
-      const reserved = invItem.reserved ?? 0;
-      const newAvailable = Math.max(0, newOnHand - reserved);
-      await base44.entities.Inventory.update(invItem.id, {
-        on_hand: newOnHand,
-        current_stock: newOnHand,
-        available: newAvailable,
-        last_updated: today,
-      });
-
-      // 2. Create consumption record (traceability)
-      await base44.entities.InventoryConsumption.create({
-        product_id: form.product_id,
-        product_name: form.product_name,
-        sku: form.sku,
-        warehouse: form.warehouse,
-        quantity: form.quantity,
-        date: today,
-        reason: form.reason,
-        department: form.department,
-        related_campaign: form.related_campaign,
-        landed_unit_cost: form.landed_unit_cost,
-        total_value: form.total_value,
-        notes: form.notes,
-      });
-
-      // 3. Auto-create ledger expense linked to department
-      await base44.entities.LedgerTransaction.create({
-        product_id: form.product_id,
-        product_name: form.product_name,
-        sku: form.sku,
-        date: today,
-        transaction_type: "expense",
-        category: form.reason,
-        department: form.department,
-        counterparty: "",
-        counterparty_type: "other",
-        description: `Inventory Consumption — ${form.reason} (${form.department})${form.related_campaign ? ` | Campaign: ${form.related_campaign}` : ""}`,
-        reference_number: "",
-        quantity: form.quantity,
-        unit_cost: form.landed_unit_cost,
-        amount_out: form.total_value,
-        amount_in: 0,
-        notes: form.notes,
-      });
-
-      // 4. Create inventory movement (traceability)
-      await base44.entities.InventoryMovement.create({
-        date: today,
-        product_id: form.product_id || invItem.id,
-        product_name: form.product_name,
-        inventory_id: invItem.id,
-        movement_type: "Outbound",
-        from_warehouse: form.warehouse,
-        quantity: form.quantity,
-        reference: `Consumption — ${form.reason}`,
-        notes: `${form.reason} | Dept: ${form.department}${form.related_campaign ? ` | Campaign: ${form.related_campaign}` : ""}${form.notes ? ` | ${form.notes}` : ""}`,
-      });
-    },
-    onSuccess: (_, form) => {
+    mutationFn: (form) => recordConsumption(form, inventory, user),
+    onSuccess: (res, form) => {
       qc.invalidateQueries({ queryKey: ["inventory"] });
       qc.invalidateQueries({ queryKey: ["inventory_movements"] });
       qc.invalidateQueries({ queryKey: ["inventory_consumptions"] });
       qc.invalidateQueries({ queryKey: ["ledger_transactions"] });
       setConsumeDialog(false);
-      const valStr = "$" + form.total_value.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const valStr = "$" + (res?.total || 0).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
       toast({ title: "Consumption recorded", description: `${form.quantity} units consumed. Expense of ${valStr} created in ledger.` });
     },
     onError: (e) => {
@@ -296,7 +237,7 @@ export default function InventoryPage() {
               <RefreshCw className={`h-4 w-4 ${recalculating ? "animate-spin" : ""}`} /> Recalculate Stock
             </Button>
             <Button variant="outline" onClick={() => setTransferDialog({ open: true, sourceItem: null })} className="gap-2 border-orange-200 text-orange-700 hover:bg-orange-50">
-              <ArrowRight className="h-4 w-4" /> Transfer to FBA
+              <ArrowRight className="h-4 w-4" /> Transfer Stock
             </Button>
             <Button variant="outline" onClick={() => setConsumeDialog(true)} className="gap-2 border-amber-200 text-amber-700 hover:bg-amber-50">
               <PackageX className="h-4 w-4" /> Record Consumption
@@ -330,10 +271,7 @@ export default function InventoryPage() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Warehouses</SelectItem>
-                <SelectItem value="Own Warehouse">Own Warehouse</SelectItem>
-                <SelectItem value="Amazon FBA">Amazon FBA</SelectItem>
-                <SelectItem value="BelaSanta Miami">BelaSanta Miami</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
+                {warehouses.map(w => <SelectItem key={w} value={w}>{w}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
@@ -397,6 +335,7 @@ export default function InventoryPage() {
       <TransferDialog
         open={transferDialog.open}
         inventory={inventory}
+        warehouses={warehouses}
         saving={doTransfer.isPending}
         onClose={() => setTransferDialog({ open: false, sourceItem: null })}
         onConfirm={form => doTransfer.mutate(form)}
