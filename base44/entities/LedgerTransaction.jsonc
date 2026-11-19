@@ -120,6 +120,26 @@
       },
       "description": "Invoices, receipts, bills, POs, shipping docs, photos, contracts"
     },
+    "sales_channel": {
+      "type": "string",
+      "description": "Sales channel this entry belongs to (Amazon, TikTok Shop, Shopify...)"
+    },
+    "source_type": {
+      "type": "string",
+      "description": "What created this entry: manual, channel_report, consumption, sample_shipment"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "ID of the record that created this entry (ChannelReport, InventoryConsumption...)"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date"
+    },
     "notes": {
       "type": "string"
     },
