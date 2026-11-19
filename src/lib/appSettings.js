@@ -4,6 +4,18 @@ import { base44 } from "@/api/base44Client";
 export const MAIN_WAREHOUSE = "Own Warehouse";
 export const DEFAULT_WAREHOUSES = [MAIN_WAREHOUSE, "Amazon FBA", "Other"];
 export const DEFAULT_SALES_CHANNELS = ["Amazon", "TikTok Shop", "Shopify"];
+export const DEFAULT_BRAND_COLOR = "#78AF86";
+
+/** Darken a hex color by a factor (0-1) for hover states. */
+export function darken(hex, factor = 0.18) {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex || "");
+  if (!m) return "#5d8f6b";
+  const n = parseInt(m[1], 16);
+  const r = Math.round(((n >> 16) & 255) * (1 - factor));
+  const g = Math.round(((n >> 8) & 255) * (1 - factor));
+  const b = Math.round((n & 255) * (1 - factor));
+  return "#" + [r, g, b].map((v) => v.toString(16).padStart(2, "0")).join("");
+}
 
 /**
  * Per-brand settings. There is a single AppSettings record per app.
@@ -38,6 +50,9 @@ export function useAppSettings() {
     warehouses,
     salesChannels,
     defaultTaxRate: settings.default_tax_rate ?? 6.5,
+    brandName: settings.brand_name || "",
+    logoUrl: settings.logo_url || "",
+    brandColor: settings.primary_color || DEFAULT_BRAND_COLOR,
     save,
   };
 }
