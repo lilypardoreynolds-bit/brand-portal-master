@@ -8,6 +8,7 @@ import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { User, Bell, Shield, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import BrandSettingsCard from "@/components/shared/BrandSettingsCard";
 
 export default function Settings() {
   const [user, setUser] = useState(null);
@@ -62,6 +63,8 @@ export default function Settings() {
           </div>
         </CardContent>
       </Card>
+
+      {user?.role === "admin" && <BrandSettingsCard />}
 
       {/* Notification Settings */}
       <Card className="border-slate-200">
