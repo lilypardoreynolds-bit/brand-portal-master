@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { base44 } from "@/api/base44Client";
 import { Paperclip, X, Loader2 } from "lucide-react";
+import { useAppSettings } from "@/lib/appSettings";
 
 const DEFAULT = {
   date: new Date().toISOString().split("T")[0],
@@ -25,6 +26,7 @@ export default function MovementFormDialog({ open, onClose, onSave, inventory = 
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef(null);
+  const { warehouses } = useAppSettings();
 
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
