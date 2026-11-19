@@ -77,7 +77,10 @@ export default function ProductLedger() {
   const allTransactions = useMemo(() => {
     const poTxns = poToLedgerTransactions(purchaseOrders, selectedProductId);
     const ccTxns = costCenterToLedgerTransactions(costCenterEntries);
-    const invTxns = invoiceRevenueToLedgerTransactions(paidInvoices, orderItems, selectedProductId);
+    // Skip invoice revenue already entered by hand (same invoice number) so nothing is counted twice
+    const manualRefs = new Set(transactions.filter(t => t.transaction_type === "revenue" && t.reference_number).map(t => t.reference_number));
+    const invTxns = invoiceRevenueToLedgerTransactions(paidInvoices, orderItems, selectedProductId)
+      .filter(t => !t.reference_number || !manualRefs.has(t.reference_number));
     return [...transactions, ...poTxns, ...ccTxns, ...invTxns];
   }, [transactions, purchaseOrders, costCenterEntries, paidInvoices, orderItems, selectedProductId]);
 
