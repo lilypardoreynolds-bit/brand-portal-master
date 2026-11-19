@@ -6,6 +6,7 @@ import { Download, FileText, Loader2 } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { useToast } from "@/components/ui/use-toast";
 import { computeKPIs, txnAmountForProduct, txnQtyForProduct } from "@/lib/ledgerCalc";
+import { getBrandName } from "@/lib/appSettings";
 
 function fmtMoney(n) {
   const v = Number(n) || 0;
@@ -153,7 +154,7 @@ export default function LedgerReports({ transactions, productId, productName }) 
       doc.rect(0, 283, 210, 14, "F");
       doc.setTextColor(...GREEN_DARK);
       doc.setFontSize(7.5);
-      doc.text("minimee — Product Financial Ledger Report", 14, 291);
+      doc.text(`${getBrandName()} — Product Financial Ledger Report`, 14, 291);
 
       doc.save(`${productName}_${reportType}_report.pdf`);
       toast({ title: "PDF exported" });
