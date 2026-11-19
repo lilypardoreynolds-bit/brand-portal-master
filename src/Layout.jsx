@@ -16,6 +16,8 @@ import { canAccessSection } from "@/lib/permissions";
 import { LanguageProvider, useLanguage } from "@/components/i18n/LanguageContext";
 import { useAuth } from "@/lib/AuthContext";
 import { LANGUAGES } from "@/components/i18n/translations";
+import { useAppSettings, darken } from "@/lib/appSettings";
+import { Inbox } from "lucide-react";
 
 const MARKETING_PAGES = [
   "MarketingHub", "MarketingWebsite", "MarketingInstagram", "MarketingTikTok",
@@ -138,6 +140,12 @@ function LayoutInner({ children, currentPageName }) {
   const { t } = useLanguage();
   const { user: currentUser } = useAuth();
   const [collapsed, setCollapsed] = useState(false);
+  const { brandName, logoUrl, brandColor } = useAppSettings();
+  React.useEffect(() => {
+    document.documentElement.style.setProperty("--brand", brandColor);
+    document.documentElement.style.setProperty("--brand-dark", darken(brandColor));
+    if (brandName) document.title = `${brandName} Portal`;
+  }, [brandColor, brandName]);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [marketingOpen, setMarketingOpen] = useState(MARKETING_PAGES.includes(currentPageName));
   const [brandOpen, setBrandOpen] = useState(BRAND_PAGES.includes(currentPageName));
@@ -168,7 +176,7 @@ function LayoutInner({ children, currentPageName }) {
       <aside
         className={cn(
           "fixed lg:static inset-y-0 left-0 z-50 flex flex-col text-white transition-all duration-300",
-          "bg-[#78AF86]",
+          "bg-[var(--brand)]",
           collapsed ? "w-[72px]" : "w-60",
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
@@ -180,19 +188,19 @@ function LayoutInner({ children, currentPageName }) {
         )}>
           {!collapsed && (
             <div className="flex items-center">
-              <img
-                src="https://media.base44.com/images/public/6a4bf76db572f02bc4b3c496/a06686e52_mee-logo.png"
-                alt="U•Joy"
-                className="h-14 w-auto object-contain"
-              />
+              {logoUrl ? (
+                <img src={logoUrl} alt={brandName || "Logo"} className="h-14 w-auto object-contain" />
+              ) : (
+                <span className="text-lg font-bold tracking-tight">{brandName || "Brand Portal"}</span>
+              )}
             </div>
           )}
           {collapsed && (
-            <img
-              src="https://media.base44.com/images/public/6a4bf76db572f02bc4b3c496/a06686e52_mee-logo.png"
-              alt="U•Joy"
-              className="h-10 w-auto object-contain"
-            />
+            logoUrl ? (
+              <img src={logoUrl} alt={brandName || "Logo"} className="h-10 w-auto object-contain" />
+            ) : (
+              <span className="text-lg font-bold">{(brandName || "B").charAt(0)}</span>
+            )
           )}
           {!collapsed && (
             <button
@@ -205,7 +213,7 @@ function LayoutInner({ children, currentPageName }) {
           {collapsed && (
             <button
               onClick={() => setCollapsed(false)}
-              className="hidden lg:flex absolute -right-3 top-[1.15rem] h-6 w-6 rounded-full bg-[#5d8f6b] border border-[#6ba078] items-center justify-center hover:bg-[#6ba078] transition-colors"
+              className="hidden lg:flex absolute -right-3 top-[1.15rem] h-6 w-6 rounded-full bg-[var(--brand-dark)] border border-white/20 items-center justify-center hover:brightness-110 transition-colors"
             >
               <ChevronLeft className="h-3.5 w-3.5 text-slate-300 rotate-180" />
             </button>
