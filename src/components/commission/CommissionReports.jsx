@@ -6,10 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
 import { Calendar, Download } from "lucide-react";
+import { getBrandName, getBrandLogo } from "@/lib/appSettings";
 
 function downloadReportPDF(report) {
   // Build a hidden HTML element, render with html2canvas, then save as PDF
-  const LOGO = "https://media.base44.com/images/public/6a4bf76db572f02bc4b3c496/a06686e52_mee-logo.png";
+  const LOGO = getBrandLogo();
+  const BRAND = getBrandName();
   const GREEN = "#78AF86";
   const GREEN_DARK = "#4a7c5e";
   const GREEN_LIGHT = "#E8F8EF";
@@ -40,7 +42,7 @@ function downloadReportPDF(report) {
           <div style="color:#fff;font-size:22px;font-weight:700;letter-spacing:0.5px;margin-bottom:4px;">Commission Report</div>
           <div style="color:rgba(255,255,255,0.75);font-size:13px;">${report.reporting_period || ""}</div>
         </div>
-        <img src="${LOGO}" style="height:72px;object-fit:contain;border-radius:6px;" crossorigin="anonymous"/>
+        ${LOGO ? `<img src="${LOGO}" style="height:72px;object-fit:contain;border-radius:6px;" crossorigin="anonymous"/>` : `<div style="font-size:22px;font-weight:700;color:#fff;">${BRAND}</div>`}
       </div>
 
       <!-- GREEN ACCENT BAR -->
@@ -130,7 +132,7 @@ function downloadReportPDF(report) {
 
       <!-- FOOTER -->
       <div style="background:${GREEN_DARK};padding:18px 48px;display:flex;align-items:center;justify-content:space-between;margin-top:auto;">
-        <div style="color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;">minimeé — Agency Commission Report</div>
+        <div style="color:rgba(255,255,255,0.9);font-size:11px;font-weight:600;">${BRAND} — Agency Commission Report</div>
         <div style="color:rgba(255,255,255,0.55);font-size:10px;">Confidential · ${generatedStr}</div>
       </div>
 
