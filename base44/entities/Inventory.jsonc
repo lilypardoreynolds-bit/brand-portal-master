@@ -28,14 +28,8 @@
     },
     "warehouse": {
       "type": "string",
-      "enum": [
-        "Own Warehouse",
-        "Amazon FBA",
-        "BelaSanta Miami",
-        "Other"
-      ],
       "default": "Own Warehouse",
-      "description": "Storage location for this inventory record"
+      "description": "Storage location for this inventory record. Options are configured per brand in AppSettings.warehouses"
     },
     "warehouse_location": {
       "type": "string",
