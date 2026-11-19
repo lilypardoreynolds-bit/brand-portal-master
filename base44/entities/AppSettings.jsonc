@@ -6,6 +6,14 @@
       "type": "string",
       "description": "Brand shown in the portal"
     },
+    "logo_url": {
+      "type": "string",
+      "description": "Brand logo shown in the sidebar and dashboard"
+    },
+    "primary_color": {
+      "type": "string",
+      "description": "Brand color (hex) used for the sidebar and main buttons"
+    },
     "warehouses": {
       "type": "array",
       "items": {
