@@ -57,7 +57,7 @@ function StatBox({ icon: Icon, label, value, color = "text-slate-900", bg = "bg-
 
 export default function Dashboard() {
   const { t } = useLanguage();
-  const { brandName, logoUrl } = useAppSettings();
+  const { brandName: settingsBrandName, logoUrl } = useAppSettings();
   const d = t.dashboard;
   const queryClient = useQueryClient();
   const isAdmin = useIsAdmin();
@@ -179,9 +179,9 @@ export default function Dashboard() {
        <div className="flex items-center justify-between">
          <div>
            {logoUrl ? (
-             <img src={logoUrl} alt={brandName || "Logo"} className="h-16 w-auto object-contain mb-2" />
+             <img src={logoUrl} alt={settingsBrandName || brandName || "Logo"} className="h-16 w-auto object-contain mb-2" />
            ) : (
-             <h1 className="text-2xl font-bold text-slate-900">{brandName || "Dashboard"}</h1>
+             <h1 className="text-2xl font-bold text-slate-900">{settingsBrandName || brandName || "Dashboard"}</h1>
            )}
            <p className="text-slate-400 text-sm mt-1">{d.lastUpdated} {format(new Date(), "MMMM d, yyyy")}</p>
          </div>
