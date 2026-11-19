@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useAppSettings } from "@/lib/appSettings";
 
 // ─── Tiny helpers ────────────────────────────────────────────────────────────
 
@@ -56,6 +57,7 @@ function StatBox({ icon: Icon, label, value, color = "text-slate-900", bg = "bg-
 
 export default function Dashboard() {
   const { t } = useLanguage();
+  const { brandName, logoUrl } = useAppSettings();
   const d = t.dashboard;
   const queryClient = useQueryClient();
   const isAdmin = useIsAdmin();
