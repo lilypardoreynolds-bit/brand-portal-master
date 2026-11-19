@@ -185,6 +185,44 @@ export function poToLedgerTransactions(purchaseOrders, productId) {
   return result;
 }
 
+/**
+ * Convert paid invoices into virtual revenue transactions for a product
+ * (ported from the U•Joy portal, adapted to this ledger's amount_in / amount_out shape).
+ */
+export function invoiceRevenueToLedgerTransactions(invoices, orderItems, productId) {
+  if (!Array.isArray(invoices) || !Array.isArray(orderItems)) return [];
+  const paidByOrderId = {};
+  invoices.forEach((inv) => {
+    if (inv.payment_status === "Paid" && inv.order_id) paidByOrderId[inv.order_id] = inv;
+  });
+  const result = [];
+  orderItems.forEach((oi) => {
+    if (!oi.order_id || !paidByOrderId[oi.order_id]) return;
+    if (productId && oi.product_id !== productId) return;
+    const inv = paidByOrderId[oi.order_id];
+    const lineTotal = oi.line_total || (oi.quantity || 0) * (oi.unit_price || 0) - (oi.discount || 0);
+    result.push({
+      id: `inv-${inv.id}-${oi.id || oi.product_id}`,
+      date: inv.payment_date || inv.invoice_date || "",
+      transaction_type: "revenue",
+      category: "Product Sale",
+      counterparty: inv.customer_name || "",
+      counterparty_type: "customer",
+      description: `Sale — ${inv.invoice_number || inv.order_number || ""} — ${oi.product_name || "Product"}`,
+      reference_number: inv.invoice_number || "",
+      quantity: oi.quantity || 0,
+      unit_cost: oi.unit_price || 0,
+      amount_in: lineTotal,
+      amount_out: 0,
+      notes: "Auto-generated from paid invoice",
+      attachment_urls: [],
+      _source: "invoice",
+      _source_id: inv.id,
+    });
+  });
+  return result;
+}
+
 /** Convert CostCenter entries into virtual ledger transactions. */
 export function costCenterToLedgerTransactions(costEntries) {
   return costEntries.map((c) => ({
