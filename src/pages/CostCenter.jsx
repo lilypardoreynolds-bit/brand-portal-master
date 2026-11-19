@@ -92,7 +92,7 @@ export default function CostCenter() {
               ))}
             </SelectContent>
           </Select>
-          <Button className="gap-1.5 bg-[#78AF86] hover:bg-[#5d8f6b]" disabled={!selectedProductId} onClick={() => { setEditing(null); setShowForm(true); }}>
+          <Button className="gap-1.5 bg-[var(--brand)] hover:bg-[var(--brand-dark)]" disabled={!selectedProductId} onClick={() => { setEditing(null); setShowForm(true); }}>
             <Plus className="h-4 w-4" /> Add Cost
           </Button>
         </div>
@@ -124,7 +124,7 @@ export default function CostCenter() {
                 </CardContent></Card>
                 <Card className="border-slate-200"><CardContent className="p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1">Grand Total</p>
-                  <p className="text-xl font-bold text-[#78AF86]">{fmtMoney(summary.total)}</p>
+                  <p className="text-xl font-bold text-[var(--brand)]">{fmtMoney(summary.total)}</p>
                 </CardContent></Card>
               </div>
 
