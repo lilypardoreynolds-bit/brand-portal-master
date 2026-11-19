@@ -1,4 +1,5 @@
 import { computeKPIs, computeLandedCostBreakdown, buildLedgerRows } from "@/lib/ledgerCalc";
+import { getBrandName } from "@/lib/appSettings";
 
 function fmtMoney(n) {
   const v = Number(n) || 0;
@@ -185,7 +186,7 @@ export async function exportProductLedgerPDF({ productName, transactions, produc
     doc.setTextColor(...GREEN_DARK);
     doc.setFontSize(7);
     doc.setFont("helvetica", "normal");
-    doc.text("minimee — Product Financial Ledger Report", M, 291);
+    doc.text(`${getBrandName()} — Product Financial Ledger Report`, M, 291);
     doc.text(`Page ${i} of ${pageCount}`, PAGE_W - M, 291, { align: "right" });
   }
 
