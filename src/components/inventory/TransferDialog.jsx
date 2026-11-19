@@ -6,18 +6,20 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Warehouse, DollarSign, Plus, Trash2 } from "lucide-react";
 
-const WAREHOUSES = ["Own Warehouse", "Amazon FBA", "BelaSanta Miami", "Other"];
+const DEFAULT_WAREHOUSES = ["Own Warehouse", "Amazon FBA", "Other"];
 
-export default function TransferDialog({ open, onClose, onConfirm, inventory, saving }) {
+export default function TransferDialog({ open, onClose, onConfirm, inventory, saving, warehouses = DEFAULT_WAREHOUSES }) {
+  const WAREHOUSES = warehouses;
+  const firstDestination = WAREHOUSES.find(w => w !== "Own Warehouse") || "Other";
   const [items, setItems] = useState([]);
-  const [toWarehouse, setToWarehouse] = useState("Amazon FBA");
+  const [toWarehouse, setToWarehouse] = useState(firstDestination);
   const [reference, setReference] = useState("");
   const [notes, setNotes] = useState("");
 
   useEffect(() => {
     if (open) {
       setItems([{ product_id: "", quantity: "" }]);
-      setToWarehouse("Amazon FBA");
+      setToWarehouse(firstDestination);
       setReference("");
       setNotes("");
     }
