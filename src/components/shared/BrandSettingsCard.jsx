@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Warehouse, Plus, X, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { useAppSettings, MAIN_WAREHOUSE } from "@/lib/appSettings";
+import { useAppSettings, MAIN_WAREHOUSE, DEFAULT_BRAND_COLOR } from "@/lib/appSettings";
+import { base44 } from "@/api/base44Client";
 
 function ListEditor({ label, items, onChange, locked = [], placeholder }) {
   const [value, setValue] = useState("");
@@ -44,11 +45,27 @@ export default function BrandSettingsCard() {
   const { settings, warehouses, salesChannels, defaultTaxRate, save, isLoading } = useAppSettings();
   const [form, setForm] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+
+  const handleLogo = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+      setForm((f) => ({ ...f, logo_url: file_url }));
+    } catch (err) {
+      toast.error(err.message);
+    }
+    setUploading(false);
+  };
 
   useEffect(() => {
     if (!isLoading) {
       setForm({
         brand_name: settings.brand_name || "",
+        logo_url: settings.logo_url || "",
+        primary_color: settings.primary_color || DEFAULT_BRAND_COLOR,
         warehouses,
         sales_channels: salesChannels,
         default_tax_rate: defaultTaxRate,
@@ -89,6 +106,32 @@ export default function BrandSettingsCard() {
           <div className="space-y-1.5">
             <Label className="text-xs text-slate-600">Default sales tax rate (%)</Label>
             <Input type="number" step="0.01" value={form.default_tax_rate} onChange={(e) => setForm({ ...form, default_tax_rate: e.target.value })} />
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <Label className="text-xs text-slate-600">Logo</Label>
+            <div className="flex items-center gap-3">
+              {form.logo_url ? (
+                <img src={form.logo_url} alt="Logo" className="h-12 w-auto rounded border bg-slate-50 p-1" />
+              ) : (
+                <div className="h-12 w-12 rounded border bg-slate-50 flex items-center justify-center text-xs text-slate-400">none</div>
+              )}
+              <label className="text-sm text-indigo-600 cursor-pointer hover:underline">
+                {uploading ? "Uploading..." : "Upload logo"}
+                <input type="file" accept="image/*" className="hidden" onChange={handleLogo} />
+              </label>
+              {form.logo_url && (
+                <button type="button" className="text-xs text-slate-400 hover:text-red-600" onClick={() => setForm({ ...form, logo_url: "" })}>remove</button>
+              )}
+            </div>
+          </div>
+          <div className="space-y-1.5">
+            <Label className="text-xs text-slate-600">Brand color</Label>
+            <div className="flex items-center gap-2">
+              <input type="color" value={form.primary_color} onChange={(e) => setForm({ ...form, primary_color: e.target.value })} className="h-9 w-12 rounded border cursor-pointer" />
+              <Input value={form.primary_color} onChange={(e) => setForm({ ...form, primary_color: e.target.value })} className="h-9 w-32" />
+            </div>
           </div>
         </div>
         <ListEditor
