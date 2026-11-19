@@ -1,0 +1,82 @@
+{
+  "name": "MarketingAllocation",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Linked product/variant ID"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "inventory_id": {
+      "type": "string",
+      "description": "Inventory row the units are taken from"
+    },
+    "warehouse": {
+      "type": "string",
+      "default": "Own Warehouse",
+      "description": "Warehouse the units come from. Options are configured per brand in AppSettings.warehouses"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0,
+      "description": "Units allocated to the program (reserved, not sellable)"
+    },
+    "program": {
+      "type": "string",
+      "enum": [
+        "Amazon Vine",
+        "Samples",
+        "Influencer",
+        "Other"
+      ],
+      "default": "Amazon Vine"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Allocated",
+        "Shipped",
+        "Completed"
+      ],
+      "default": "Allocated"
+    },
+    "unit_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "product_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Quantity x unit cost"
+    },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Postage paid to ship the units (USD)"
+    },
+    "total_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Product cost + shipping cost"
+    },
+    "expense_id": {
+      "type": "string",
+      "description": "Marketing expense created in Brand Expenses for this allocation"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_name",
+    "quantity",
+    "program",
+    "date"
+  ]
+}
