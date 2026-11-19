@@ -46,7 +46,6 @@ export default function AllocationFormDialog({ open, onClose, onSave, inventory 
       setNotes("");
       setError("");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   const rows = inventory.filter(i => whOf(i) === warehouse);
