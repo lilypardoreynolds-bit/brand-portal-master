@@ -7,7 +7,7 @@ import {
   AlertDialogContent, AlertDialogDescription, AlertDialogFooter,
   AlertDialogHeader, AlertDialogTitle
 } from "@/components/ui/alert-dialog";
-import { Pencil, Trash2, Truck, ArrowUpDown, CheckCircle2 } from "lucide-react";
+import { Pencil, Trash2, Truck, ArrowUpDown, CheckCircle2, Paperclip } from "lucide-react";
 
 const fmt = (date) => date ? new Date(date).toLocaleDateString() : "—";
 
@@ -107,6 +107,18 @@ export default function PurchaseOrdersTable({ orders, onEdit, onDelete, onRecord
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-1.5">
+                    {po.documents?.length > 0 && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-7 px-1.5 gap-1 text-slate-500"
+                        title="Purchase documents"
+                        onClick={() => onEdit && onEdit(po)}
+                      >
+                        <Paperclip className="h-3.5 w-3.5 text-indigo-500" />
+                        <span className="text-xs">{po.documents.length}</span>
+                      </Button>
+                    )}
                     <Button variant="ghost" size="icon" className="h-7 w-7" title="Record Movement" onClick={() => onRecordMovement && onRecordMovement(po)}>
                       <ArrowUpDown className="h-3.5 w-3.5 text-indigo-400" />
                     </Button>
