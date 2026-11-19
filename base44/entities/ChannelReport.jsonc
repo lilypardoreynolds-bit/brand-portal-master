@@ -1,0 +1,146 @@
+{
+  "name": "ChannelReport",
+  "type": "object",
+  "properties": {
+    "channel": {
+      "type": "string",
+      "description": "Sales channel: Amazon, TikTok Shop, Shopify, Walmart, Other"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date",
+      "description": "First day covered by the report"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date",
+      "description": "Last day covered by the report"
+    },
+    "units_sold": {
+      "type": "number",
+      "default": 0
+    },
+    "orders_count": {
+      "type": "number",
+      "default": 0
+    },
+    "product_sales": {
+      "type": "number",
+      "default": 0,
+      "description": "Product sales (gross, before fees)"
+    },
+    "shipping_credits": {
+      "type": "number",
+      "default": 0
+    },
+    "gift_wrap_credits": {
+      "type": "number",
+      "default": 0
+    },
+    "reimbursements": {
+      "type": "number",
+      "default": 0,
+      "description": "FBA inventory reimbursements / adjustments in our favor"
+    },
+    "other_income": {
+      "type": "number",
+      "default": 0
+    },
+    "refunds": {
+      "type": "number",
+      "default": 0,
+      "description": "Refunded product sales (enter as positive number)"
+    },
+    "promotional_rebates": {
+      "type": "number",
+      "default": 0,
+      "description": "Coupons, promotions, discounts (positive number)"
+    },
+    "selling_fees": {
+      "type": "number",
+      "default": 0,
+      "description": "Referral / selling fees (positive number)"
+    },
+    "fba_fees": {
+      "type": "number",
+      "default": 0,
+      "description": "FBA fulfillment fees (positive number)"
+    },
+    "storage_fees": {
+      "type": "number",
+      "default": 0,
+      "description": "FBA storage fees, incl. long-term / aged inventory"
+    },
+    "inbound_fees": {
+      "type": "number",
+      "default": 0,
+      "description": "Inbound placement / inbound transportation fees"
+    },
+    "advertising_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Cost of advertising (Sponsored Products, etc.)"
+    },
+    "subscription_fees": {
+      "type": "number",
+      "default": 0,
+      "description": "Seller account subscription / service fees"
+    },
+    "other_transaction_fees": {
+      "type": "number",
+      "default": 0
+    },
+    "other_expenses": {
+      "type": "number",
+      "default": 0
+    },
+    "marketplace_withheld_tax": {
+      "type": "number",
+      "default": 0,
+      "description": "Sales tax collected and remitted by the marketplace (memo only, not revenue)"
+    },
+    "total_income": {
+      "type": "number",
+      "default": 0
+    },
+    "total_expenses": {
+      "type": "number",
+      "default": 0
+    },
+    "net_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "total_income - total_expenses"
+    },
+    "deposited_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Amount actually transferred to the bank, to reconcile"
+    },
+    "report_file_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Original report files"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "entered_by_name": {
+      "type": "string"
+    },
+    "ledger_transaction_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Ledger entries posted from this report"
+    }
+  },
+  "required": [
+    "channel",
+    "period_start",
+    "period_end"
+  ]
+}
