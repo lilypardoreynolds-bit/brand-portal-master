@@ -138,8 +138,7 @@ export default function MovementFormDialog({ open, onClose, onSave, inventory = 
             <Select value={form.location || "none"} onValueChange={v => set("location", v === "none" ? "" : v)}>
               <SelectTrigger className="mt-1"><SelectValue placeholder="Select location..." /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="Warehouse">Warehouse</SelectItem>
-                <SelectItem value="Amazon FBA">Amazon FBA</SelectItem>
+                {warehouses.map(w => <SelectItem key={w} value={w}>{w}</SelectItem>)}
               </SelectContent>
             </Select>
           </div>
