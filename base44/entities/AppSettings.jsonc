@@ -1,0 +1,34 @@
+{
+  "name": "AppSettings",
+  "type": "object",
+  "properties": {
+    "brand_name": {
+      "type": "string",
+      "description": "Brand shown in the portal"
+    },
+    "warehouses": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Warehouse / storage locations used by this brand. 'Own Warehouse' is always the main source."
+    },
+    "sales_channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sales channels this brand reports on (Amazon, TikTok Shop, Shopify...)"
+    },
+    "default_tax_rate": {
+      "type": "number",
+      "default": 6.5,
+      "description": "Default sales tax rate (%) for new invoices"
+    },
+    "invoice_legal_footer": {
+      "type": "string",
+      "description": "Default legal statement printed on invoices"
+    }
+  },
+  "required": []
+}
