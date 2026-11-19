@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
 import { Plus, Trash2 } from "lucide-react";
 import FileUploader from "@/components/shared/FileUploader";
+import PODocumentsField from "@/components/inventory/PODocumentsField";
 
 const blankLine = () => ({ product_id: "", product_name: "", quantity: "", unit_price: "" });
 
@@ -132,6 +133,7 @@ export default function PurchaseOrderFormDialog({ open, onClose, onSave, po, pro
     const poData = {
       ...form,
       line_items: parsedLines,
+      documents: form.documents || [],
       product_id: firstLine.product_id || "",
       product_name: productNames,
       quantity: totalQty,
@@ -315,6 +317,8 @@ export default function PurchaseOrderFormDialog({ open, onClose, onSave, po, pro
               <Input value={form.carrier} onChange={e => set("carrier", e.target.value)} placeholder="e.g. DHL, UPS, FedEx" />
             </div>
           </div>
+
+          <PODocumentsField documents={form.documents || []} onChange={docs => set("documents", docs)} />
 
           <div className="space-y-1.5">
             <Label>Notes</Label>
