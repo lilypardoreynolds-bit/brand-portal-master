@@ -95,6 +95,13 @@ const getNavGroups = (t) => [
     ]
   },
   {
+    label: "Data Entry",
+    items: [
+      { name: "Channel Reports", icon: Inbox, page: "ChannelReports", sectionKey: "data_entry" },
+      { name: "Sample Shipments", icon: Truck, page: "SampleShipments", sectionKey: "data_entry" },
+    ]
+  },
+  {
     label: t.navGroups.system,
     items: [
       { name: t.nav.settings, icon: Settings, page: "Settings", sectionKey: "settings" },
