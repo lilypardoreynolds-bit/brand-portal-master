@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Trash2, Plus } from "lucide-react";
+import { useAppSettings } from "@/lib/appSettings";
 
 const EMPTY_ITEM = { product_name: "", sku: "", quantity: 1, unit_price: 0, discount: 0, line_total: 0 };
 
@@ -20,6 +21,9 @@ function calcLineTotal(item) {
 
 export default function InvoiceFormDialog({ open, onClose, onSaved, invoice, nextInvoiceNumber }) {
   const today = new Date().toISOString().split("T")[0];
+  const { settings, defaultTaxRate } = useAppSettings();
+  const brandFooter = settings.invoice_legal_footer ||
+    `${settings.brand_name || "The company"} is the brand owner and authorized distributor of the products listed above.\nAll goods are authentic and manufactured by an approved facility in compliance with industry standards.\nThis invoice reflects a legitimate B2B transaction.`;
 
   const defaultForm = {
     invoice_number: nextInvoiceNumber || "INV-0001",
@@ -38,7 +42,7 @@ export default function InvoiceFormDialog({ open, onClose, onSaved, invoice, nex
     customer_phone: "",
     tax_exempt: false,
     resale_certificate_number: "",
-    tax_rate: 6.5,
+    tax_rate: defaultTaxRate,
     shipping: 0,
     notes: "",
     ship_to_name: "",
@@ -48,7 +52,7 @@ export default function InvoiceFormDialog({ open, onClose, onSaved, invoice, nex
     ship_to_zip: "",
     ship_to_country: "United States",
     ship_to_phone: "",
-    legal_footer: "Divine Pepper LLC is the brand owner and authorized distributor of the products listed above.\nAll goods are authentic and manufactured by an approved facility in compliance with industry standards.\nThis invoice reflects a legitimate B2B transaction.",
+    legal_footer: brandFooter,
   };
 
   const [form, setForm] = useState(defaultForm);
