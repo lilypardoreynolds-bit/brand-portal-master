@@ -176,11 +176,11 @@ export default function Dashboard() {
       {/* ── Header ── */}
        <div className="flex items-center justify-between">
          <div>
-           <img
-             src="https://media.base44.com/images/public/6a4bf76db572f02bc4b3c496/a06686e52_mee-logo.png"
-             alt="U•Joy"
-             className="h-16 w-auto object-contain mb-2"
-           />
+           {logoUrl ? (
+             <img src={logoUrl} alt={brandName || "Logo"} className="h-16 w-auto object-contain mb-2" />
+           ) : (
+             <h1 className="text-2xl font-bold text-slate-900">{brandName || "Dashboard"}</h1>
+           )}
            <p className="text-slate-400 text-sm mt-1">{d.lastUpdated} {format(new Date(), "MMMM d, yyyy")}</p>
          </div>
         {notifications.length > 0 && (
