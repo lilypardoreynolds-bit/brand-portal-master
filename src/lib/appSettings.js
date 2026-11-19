@@ -8,8 +8,12 @@ export const DEFAULT_BRAND_COLOR = "#78AF86";
 
 // Last known brand name, for non-React code (PDF exports, HTML reports)
 let cachedBrandName = "";
+let cachedLogoUrl = "";
 export function getBrandName() {
   return cachedBrandName || "Brand";
+}
+export function getBrandLogo() {
+  return cachedLogoUrl;
 }
 
 /** Darken a hex color by a factor (0-1) for hover states. */
@@ -41,6 +45,7 @@ export function useAppSettings() {
 
   const settings = data || {};
   if (settings.brand_name) cachedBrandName = settings.brand_name;
+  if (settings.logo_url) cachedLogoUrl = settings.logo_url;
   const extra = (settings.warehouses || []).filter((w) => w && w !== MAIN_WAREHOUSE);
   const warehouses = [MAIN_WAREHOUSE, ...(extra.length ? extra : DEFAULT_WAREHOUSES.slice(1))];
   const salesChannels = settings.sales_channels?.length ? settings.sales_channels : DEFAULT_SALES_CHANNELS;
