@@ -4,6 +4,9 @@
 
 @layer base {
   :root {
+    /* Brand color — overridden at runtime from AppSettings.primary_color */
+    --brand: #78AF86;
+    --brand-dark: #5d8f6b;
     --background: 210 20% 98%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
