@@ -1,31 +1,40 @@
 {
   "name": "PurchaseOrder",
-  "type": "object",
   "properties": {
-    "po_number": {
-      "type": "string",
-      "description": "Purchase Order number"
-    },
-    "order_date": {
-      "type": "string",
-      "format": "date"
-    },
-    "expected_delivery": {
-      "type": "string",
-      "format": "date"
-    },
-    "supplier_id": {
-      "type": "string",
-      "description": "Linked supplier ID"
-    },
-    "supplier_name": {
+    "carrier": {
       "type": "string"
     },
+    "documents": {
+      "description": "Documents related to this purchase (invoices, packing lists, receipts, quotes) stored privately",
+      "items": {
+        "properties": {
+          "file_uri": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "expected_delivery": {
+      "format": "date",
+      "type": "string"
+    },
+    "import_duties": {
+      "default": 0,
+      "type": "number"
+    },
+    "inspection_cost": {
+      "default": 0,
+      "description": "Quality inspection cost allocated across products",
+      "type": "number"
+    },
     "line_items": {
-      "type": "array",
       "description": "List of products in this PO",
       "items": {
-        "type": "object",
         "properties": {
           "product_id": {
             "type": "string"
@@ -34,67 +43,66 @@
             "type": "string"
           },
           "quantity": {
-            "type": "number",
-            "default": 0
+            "default": 0,
+            "type": "number"
           },
           "unit_price": {
-            "type": "number",
-            "default": 0
+            "default": 0,
+            "type": "number"
           }
-        }
-      }
+        },
+        "type": "object"
+      },
+      "type": "array"
     },
-    "product_id": {
-      "type": "string",
-      "description": "Primary product ID (for backward compat)"
+    "notes": {
+      "type": "string"
     },
-    "product_name": {
-      "type": "string",
-      "description": "Primary product name (for backward compat)"
-    },
-    "quantity": {
-      "type": "number",
-      "default": 0,
-      "description": "Total quantity (for backward compat)"
-    },
-    "unit_price": {
-      "type": "number",
-      "default": 0
-    },
-    "shipping_cost": {
-      "type": "number",
-      "default": 0
-    },
-    "import_duties": {
-      "type": "number",
-      "default": 0
+    "order_date": {
+      "format": "date",
+      "type": "string"
     },
     "other_fees": {
-      "type": "number",
-      "default": 0
+      "default": 0,
+      "type": "number"
     },
     "packaging_cost": {
-      "type": "number",
       "default": 0,
-      "description": "Packaging cost allocated across products"
+      "description": "Packaging cost allocated across products",
+      "type": "number"
     },
-    "inspection_cost": {
-      "type": "number",
-      "default": 0,
-      "description": "Quality inspection cost allocated across products"
+    "payment_date": {
+      "format": "date",
+      "type": "string"
+    },
+    "po_number": {
+      "description": "Purchase Order number",
+      "type": "string"
     },
     "prep_handling_cost": {
-      "type": "number",
       "default": 0,
-      "description": "Prep / handling cost allocated across products"
+      "description": "Prep / handling cost allocated across products",
+      "type": "number"
     },
-    "total_amount": {
-      "type": "number",
+    "product_id": {
+      "description": "Primary product ID (for backward compat)",
+      "type": "string"
+    },
+    "product_name": {
+      "description": "Primary product name (for backward compat)",
+      "type": "string"
+    },
+    "quantity": {
       "default": 0,
-      "description": "Total PO cost"
+      "description": "Total quantity (for backward compat)",
+      "type": "number"
+    },
+    "shipping_cost": {
+      "default": 0,
+      "type": "number"
     },
     "status": {
-      "type": "string",
+      "default": "Draft",
       "enum": [
         "Draft",
         "Ordered",
@@ -103,23 +111,30 @@
         "Delivered",
         "Cancelled"
       ],
-      "default": "Draft"
+      "type": "string"
     },
-    "payment_date": {
-      "type": "string",
-      "format": "date"
+    "supplier_id": {
+      "description": "Linked supplier ID",
+      "type": "string"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "total_amount": {
+      "default": 0,
+      "description": "Total PO cost",
+      "type": "number"
     },
     "tracking_number": {
       "type": "string"
     },
-    "carrier": {
-      "type": "string"
-    },
-    "notes": {
-      "type": "string"
+    "unit_price": {
+      "default": 0,
+      "type": "number"
     }
   },
   "required": [
     "order_date"
-  ]
+  ],
+  "type": "object"
 }
