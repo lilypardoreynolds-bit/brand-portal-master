@@ -6,6 +6,12 @@ export const DEFAULT_WAREHOUSES = [MAIN_WAREHOUSE, "Amazon FBA", "Other"];
 export const DEFAULT_SALES_CHANNELS = ["Amazon", "TikTok Shop", "Shopify"];
 export const DEFAULT_BRAND_COLOR = "#78AF86";
 
+// Last known brand name, for non-React code (PDF exports, HTML reports)
+let cachedBrandName = "";
+export function getBrandName() {
+  return cachedBrandName || "Brand";
+}
+
 /** Darken a hex color by a factor (0-1) for hover states. */
 export function darken(hex, factor = 0.18) {
   const m = /^#?([0-9a-f]{6})$/i.exec(hex || "");
@@ -34,6 +40,7 @@ export function useAppSettings() {
   });
 
   const settings = data || {};
+  if (settings.brand_name) cachedBrandName = settings.brand_name;
   const extra = (settings.warehouses || []).filter((w) => w && w !== MAIN_WAREHOUSE);
   const warehouses = [MAIN_WAREHOUSE, ...(extra.length ? extra : DEFAULT_WAREHOUSES.slice(1))];
   const salesChannels = settings.sales_channels?.length ? settings.sales_channels : DEFAULT_SALES_CHANNELS;
