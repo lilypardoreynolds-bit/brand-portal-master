@@ -1,0 +1,52 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "domain_expiry",
+        "resale_cert_expiry",
+        "lease_expiry",
+        "trademark_renewal",
+        "general"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "is_read": {
+      "type": "boolean",
+      "default": false
+    },
+    "related_item_id": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "title",
+    "type"
+  ]
+}

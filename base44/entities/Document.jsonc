@@ -1,0 +1,205 @@
+{
+  "name": "Document",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "ID of the associated company"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "formation",
+        "ein",
+        "bank_account",
+        "trademark",
+        "resale_certificate",
+        "lease",
+        "phone",
+        "domain",
+        "email_account",
+        "alibaba_account",
+        "gs1_account",
+        "password_board"
+      ]
+    },
+    "document_name": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    },
+    "file_type": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "formation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "registration_number": {
+      "type": "string"
+    },
+    "ein_number": {
+      "type": "string"
+    },
+    "ein_issue_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "bank_name": {
+      "type": "string"
+    },
+    "account_type": {
+      "type": "string",
+      "enum": [
+        "Checking",
+        "Savings",
+        "Business Checking",
+        "Business Savings"
+      ]
+    },
+    "last_4_digits": {
+      "type": "string"
+    },
+    "trademark_name": {
+      "type": "string"
+    },
+    "application_number": {
+      "type": "string"
+    },
+    "trademark_app_status": {
+      "type": "string",
+      "enum": [
+        "Filed",
+        "Under Review",
+        "Published",
+        "Registered",
+        "Rejected"
+      ]
+    },
+    "certificate_number": {
+      "type": "string"
+    },
+    "business_partner_number": {
+      "type": "string",
+      "description": "Business Partner Number for resale certificate"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "address": {
+      "type": "string"
+    },
+    "lease_type": {
+      "type": "string",
+      "enum": [
+        "Virtual Office",
+        "Warehouse",
+        "Office",
+        "Retail",
+        "Co-working"
+      ]
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "login_username": {
+      "type": "string",
+      "description": "Login username for virtual office portal"
+    },
+    "login_password": {
+      "type": "string",
+      "description": "Login password for virtual office portal"
+    },
+    "monthly_payment": {
+      "type": "number",
+      "description": "Monthly payment amount"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "phone_type": {
+      "type": "string",
+      "enum": [
+        "VOIP",
+        "Mobile",
+        "Call Center",
+        "Landline"
+      ]
+    },
+    "phone_payment_amount": {
+      "type": "number",
+      "description": "Phone bill payment amount"
+    },
+    "phone_payment_frequency": {
+      "type": "string",
+      "enum": [
+        "Monthly",
+        "Annual"
+      ],
+      "default": "Monthly",
+      "description": "Phone bill payment frequency"
+    },
+    "platform": {
+      "type": "string",
+      "description": "Platform name (e.g. Gmail, Outlook, Alibaba)"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address for this account"
+    },
+    "password": {
+      "type": "string",
+      "description": "Password for this account"
+    },
+    "gs1_prefix": {
+      "type": "string",
+      "description": "GS1 company prefix"
+    },
+    "gs1_username": {
+      "type": "string",
+      "description": "GS1 login username"
+    },
+    "gs1_password": {
+      "type": "string",
+      "description": "GS1 login password"
+    },
+    "gs1_renewal_date": {
+      "type": "string",
+      "format": "date",
+      "description": "GS1 subscription renewal date"
+    },
+    "pb_url": {
+      "type": "string",
+      "description": "Website / app URL for password board entry"
+    },
+    "pb_username": {
+      "type": "string",
+      "description": "Username or email for password board entry"
+    },
+    "pb_password": {
+      "type": "string",
+      "description": "Password for password board entry"
+    }
+  },
+  "required": [
+    "company_id",
+    "category",
+    "document_name"
+  ]
+}

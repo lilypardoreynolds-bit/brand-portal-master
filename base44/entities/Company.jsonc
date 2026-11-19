@@ -1,0 +1,171 @@
+{
+  "name": "Company",
+  "type": "object",
+  "properties": {
+    "company_name": {
+      "type": "string",
+      "description": "Legal company name"
+    },
+    "brand_name": {
+      "type": "string",
+      "description": "Brand or DBA name"
+    },
+    "state_of_registration": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "default": "United States"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "LLC",
+        "Corporation",
+        "Non Profit",
+        "Sole Proprietorship",
+        "Partnership"
+      ]
+    },
+    "formation_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "registration_number": {
+      "type": "string"
+    },
+    "ein": {
+      "type": "string"
+    },
+    "business_address": {
+      "type": "string"
+    },
+    "business_city": {
+      "type": "string"
+    },
+    "business_state": {
+      "type": "string"
+    },
+    "business_zip": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "description": "Business email address"
+    },
+    "website": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "logo_url": {
+      "type": "string"
+    },
+    "formation_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "ein_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "bank_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "trademark_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "resale_cert_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "lease_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "phone_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "domains_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "email_account_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "alibaba_account_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    },
+    "gs1_account_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "in_progress",
+        "complete"
+      ],
+      "default": "pending"
+    }
+  },
+  "required": [
+    "company_name"
+  ]
+}

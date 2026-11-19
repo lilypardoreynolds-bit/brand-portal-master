@@ -1,0 +1,42 @@
+{
+  "name": "Prototype",
+  "type": "object",
+  "properties": {
+    "product_idea_id": {
+      "type": "string",
+      "description": "Linked product idea ID"
+    },
+    "version": {
+      "type": "string",
+      "description": "Prototype version (e.g. v1.0)"
+    },
+    "date_created": {
+      "type": "string",
+      "format": "date"
+    },
+    "supplier_id": {
+      "type": "string",
+      "description": "Linked supplier ID"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "changes_from_previous": {
+      "type": "string"
+    },
+    "testing_notes": {
+      "type": "string"
+    },
+    "file_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Photos, videos, design files"
+    }
+  },
+  "required": [
+    "product_idea_id",
+    "version"
+  ]
+}

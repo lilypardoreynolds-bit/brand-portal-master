@@ -1,0 +1,94 @@
+{
+  "name": "ContentPost",
+  "type": "object",
+  "properties": {
+    "channel_type": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "tiktok",
+        "youtube",
+        "pinterest",
+        "general"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "post_type": {
+      "type": "string",
+      "enum": [
+        "Reel",
+        "Story",
+        "Carousel",
+        "Image",
+        "Video",
+        "Short",
+        "Pin"
+      ]
+    },
+    "hook": {
+      "type": "string"
+    },
+    "script_notes": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "posting_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Planned",
+        "Created",
+        "Posted",
+        "Recording",
+        "Editing"
+      ],
+      "default": "Planned"
+    },
+    "recording_status": {
+      "type": "string",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Done"
+      ],
+      "default": "Not Started"
+    },
+    "media_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "thumbnail_url": {
+      "type": "string"
+    },
+    "approval_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected"
+      ],
+      "default": "pending",
+      "description": "Content approval status"
+    },
+    "approval_notes": {
+      "type": "string",
+      "description": "Notes from the approver"
+    }
+  },
+  "required": [
+    "channel_type",
+    "title"
+  ]
+}

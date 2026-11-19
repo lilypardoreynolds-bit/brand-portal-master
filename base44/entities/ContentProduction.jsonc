@@ -1,0 +1,67 @@
+{
+  "name": "ContentProduction",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "content_type": {
+      "type": "string",
+      "enum": [
+        "Photo",
+        "Video",
+        "Graphic"
+      ]
+    },
+    "platform_target": {
+      "type": "string",
+      "enum": [
+        "instagram",
+        "tiktok",
+        "youtube",
+        "pinterest",
+        "website",
+        "multi"
+      ]
+    },
+    "creator": {
+      "type": "string"
+    },
+    "editing_tool": {
+      "type": "string",
+      "enum": [
+        "CapCut",
+        "Holo",
+        "Adobe Premiere",
+        "Final Cut",
+        "Canva",
+        "Photoshop",
+        "Other"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Idea",
+        "Recording",
+        "Editing",
+        "Ready to Post",
+        "Published"
+      ],
+      "default": "Idea"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "file_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "content_type"
+  ]
+}

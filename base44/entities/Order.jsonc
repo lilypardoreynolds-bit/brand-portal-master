@@ -1,0 +1,97 @@
+{
+  "name": "Order",
+  "type": "object",
+  "properties": {
+    "order_number": {
+      "type": "string"
+    },
+    "order_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "customer_id": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "sales_channel_id": {
+      "type": "string"
+    },
+    "sales_channel_name": {
+      "type": "string"
+    },
+    "order_status": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "Processing",
+        "Shipped",
+        "Completed",
+        "Cancelled"
+      ],
+      "default": "Pending"
+    },
+    "fulfillment_status": {
+      "type": "string",
+      "enum": [
+        "Not Fulfilled",
+        "Partial",
+        "Fulfilled"
+      ],
+      "default": "Not Fulfilled",
+      "description": "Fulfillment status tracking"
+    },
+    "fulfillment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when order was fulfilled"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "Paid",
+        "Pending",
+        "Refunded"
+      ],
+      "default": "Pending"
+    },
+    "payment_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when payment was received"
+    },
+    "fulfillment_deadline": {
+      "type": "string",
+      "format": "date",
+      "description": "Calculated deadline based on payment date"
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "discount": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping": {
+      "type": "number",
+      "default": 0
+    },
+    "tax": {
+      "type": "number",
+      "default": 0
+    },
+    "total": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "order_number",
+    "order_date"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Domain",
+  "type": "object",
+  "properties": {
+    "company_id": {
+      "type": "string",
+      "description": "ID of the associated company"
+    },
+    "domain_name": {
+      "type": "string"
+    },
+    "registrar": {
+      "type": "string"
+    },
+    "purchase_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "website_link": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "auto_renew": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "company_id",
+    "domain_name"
+  ]
+}

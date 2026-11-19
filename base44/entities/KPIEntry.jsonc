@@ -1,0 +1,48 @@
+{
+  "name": "KPIEntry",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "efficiency",
+        "customer",
+        "inventory"
+      ],
+      "description": "KPI category"
+    },
+    "metric": {
+      "type": "string",
+      "description": "Name of the metric"
+    },
+    "value": {
+      "type": "number",
+      "description": "Numeric value of the metric"
+    },
+    "period": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this entry represents (YYYY-MM-DD)"
+    },
+    "period_type": {
+      "type": "string",
+      "enum": [
+        "day",
+        "week",
+        "month",
+        "year"
+      ],
+      "default": "month"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "category",
+    "metric",
+    "value",
+    "period"
+  ]
+}

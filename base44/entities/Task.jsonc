@@ -1,0 +1,74 @@
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "task_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "assigned_to": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "default": "Medium"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "To Do",
+        "In Progress",
+        "Review",
+        "Completed"
+      ],
+      "default": "To Do"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Linked project ID"
+    },
+    "project_name": {
+      "type": "string"
+    },
+    "related_module": {
+      "type": "string",
+      "enum": [
+        "Marketing",
+        "Product",
+        "Sales",
+        "Inventory",
+        "Strategy",
+        "Operations",
+        "Brand",
+        "Other"
+      ]
+    },
+    "file_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "task_name"
+  ]
+}

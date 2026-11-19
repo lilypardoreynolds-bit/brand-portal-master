@@ -1,0 +1,54 @@
+{
+  "name": "SalesTaxEntry",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "description": "Order ID or reference"
+    },
+    "order_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "sales_channel": {
+      "type": "string"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "revenue": {
+      "type": "number",
+      "default": 0
+    },
+    "tax_rate": {
+      "type": "number",
+      "default": 0,
+      "description": "Tax rate as percentage, e.g. 6.5"
+    },
+    "tax_collected": {
+      "type": "number",
+      "default": 0
+    },
+    "tax_exempt": {
+      "type": "boolean",
+      "default": false
+    },
+    "resale_certificate_number": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "order_date",
+    "state",
+    "revenue"
+  ]
+}

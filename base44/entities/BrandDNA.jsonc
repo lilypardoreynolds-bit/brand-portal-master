@@ -1,0 +1,115 @@
+{
+  "name": "BrandDNA",
+  "type": "object",
+  "properties": {
+    "brand_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Food & Beverage",
+        "Beauty & Skincare",
+        "Supplements & Health",
+        "Apparel & Fashion",
+        "Home & Lifestyle",
+        "Tech & Gadgets",
+        "Pets",
+        "Kids & Baby",
+        "Sports & Fitness",
+        "Other"
+      ]
+    },
+    "target_market": {
+      "type": "string"
+    },
+    "problem_solved": {
+      "type": "string"
+    },
+    "price_positioning": {
+      "type": "string",
+      "enum": [
+        "Budget",
+        "Mid-Range",
+        "Premium",
+        "Luxury"
+      ]
+    },
+    "target_age_range": {
+      "type": "string"
+    },
+    "target_gender": {
+      "type": "string",
+      "enum": [
+        "Male",
+        "Female",
+        "All Genders",
+        "Non-Binary"
+      ]
+    },
+    "core_product_type": {
+      "type": "string"
+    },
+    "mission": {
+      "type": "string"
+    },
+    "vision": {
+      "type": "string"
+    },
+    "values": {
+      "type": "string"
+    },
+    "brand_story": {
+      "type": "string"
+    },
+    "brand_personality": {
+      "type": "string"
+    },
+    "brand_voice": {
+      "type": "string"
+    },
+    "primary_audience": {
+      "type": "string"
+    },
+    "secondary_audience": {
+      "type": "string"
+    },
+    "customer_persona": {
+      "type": "string"
+    },
+    "usp": {
+      "type": "string"
+    },
+    "competitive_positioning": {
+      "type": "string"
+    },
+    "differentiation": {
+      "type": "string"
+    },
+    "product_ideas": {
+      "type": "string"
+    },
+    "name_suggestions": {
+      "type": "string"
+    },
+    "launch_plan": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "generated"
+      ],
+      "default": "draft"
+    }
+  },
+  "required": [
+    "brand_name",
+    "category"
+  ]
+}

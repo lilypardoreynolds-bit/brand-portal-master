@@ -1,0 +1,138 @@
+{
+  "name": "LedgerTransaction",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Primary linked Product ID"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "transaction_type": {
+      "type": "string",
+      "enum": [
+        "investment",
+        "expense",
+        "revenue",
+        "adjustment"
+      ],
+      "description": "investment = money in for product cost; expense = operating cost; revenue = money earned; adjustment = manual correction"
+    },
+    "category": {
+      "type": "string",
+      "description": "e.g. Product Purchase, Freight, Customs, FBA Fees"
+    },
+    "department": {
+      "type": "string",
+      "description": "Department responsible for this transaction (e.g. Marketing, Operations, Finance)"
+    },
+    "counterparty": {
+      "type": "string",
+      "description": "Supplier or customer name"
+    },
+    "counterparty_type": {
+      "type": "string",
+      "enum": [
+        "supplier",
+        "customer",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "reference_number": {
+      "type": "string",
+      "description": "Invoice, receipt or PO number"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0,
+      "description": "Units involved in this transaction"
+    },
+    "unit_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "amount_in": {
+      "type": "number",
+      "default": 0,
+      "description": "Money received (+)"
+    },
+    "amount_out": {
+      "type": "number",
+      "default": 0,
+      "description": "Money spent (-)"
+    },
+    "allocations": {
+      "type": "array",
+      "description": "Optional cost allocation across multiple products / SKUs / brands / clients / suppliers / POs / shipments",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "brand": {
+            "type": "string"
+          },
+          "client": {
+            "type": "string"
+          },
+          "supplier": {
+            "type": "string"
+          },
+          "purchase_order": {
+            "type": "string"
+          },
+          "shipment": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "default": 0
+          },
+          "quantity": {
+            "type": "number",
+            "default": 0
+          }
+        }
+      }
+    },
+    "attachment_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Invoices, receipts, bills, POs, shipping docs, photos, contracts"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_by_name": {
+      "type": "string"
+    },
+    "edited_by_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "transaction_type",
+    "category"
+  ]
+}

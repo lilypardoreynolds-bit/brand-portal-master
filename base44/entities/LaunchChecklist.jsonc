@@ -1,0 +1,39 @@
+{
+  "name": "LaunchChecklist",
+  "type": "object",
+  "properties": {
+    "product_idea_id": {
+      "type": "string"
+    },
+    "supplier_confirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "final_cost_approved": {
+      "type": "boolean",
+      "default": false
+    },
+    "packaging_finalized": {
+      "type": "boolean",
+      "default": false
+    },
+    "inventory_ordered": {
+      "type": "boolean",
+      "default": false
+    },
+    "marketing_assets_ready": {
+      "type": "boolean",
+      "default": false
+    },
+    "product_listing_ready": {
+      "type": "boolean",
+      "default": false
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_idea_id"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "ProductCost",
+  "type": "object",
+  "properties": {
+    "product_idea_id": {
+      "type": "string"
+    },
+    "manufacturing_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "packaging_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping_estimate": {
+      "type": "number",
+      "default": 0
+    },
+    "import_duties_estimate": {
+      "type": "number",
+      "default": 0
+    },
+    "fulfillment_estimate": {
+      "type": "number",
+      "default": 0
+    },
+    "other_costs": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_idea_id"
+  ]
+}

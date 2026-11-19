@@ -1,0 +1,72 @@
+{
+  "name": "TaxFilingRecord",
+  "type": "object",
+  "properties": {
+    "quarter": {
+      "type": "string",
+      "enum": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    },
+    "year": {
+      "type": "number"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "total_revenue": {
+      "type": "number",
+      "default": 0
+    },
+    "total_taxable_sales": {
+      "type": "number",
+      "default": 0
+    },
+    "total_exempt_sales": {
+      "type": "number",
+      "default": 0
+    },
+    "total_tax_collected": {
+      "type": "number",
+      "default": 0
+    },
+    "tax_due": {
+      "type": "number",
+      "default": 0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "Filed"
+      ],
+      "default": "Pending"
+    },
+    "filed_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "report_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Attached filing report documents"
+    }
+  },
+  "required": [
+    "quarter",
+    "year"
+  ]
+}

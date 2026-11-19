@@ -1,0 +1,46 @@
+{
+  "name": "ProductTest",
+  "type": "object",
+  "properties": {
+    "product_idea_id": {
+      "type": "string"
+    },
+    "test_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "test_type": {
+      "type": "string",
+      "enum": [
+        "Quality",
+        "User Experience",
+        "Packaging",
+        "Safety",
+        "Durability"
+      ]
+    },
+    "results": {
+      "type": "string"
+    },
+    "issues_found": {
+      "type": "string"
+    },
+    "improvements_needed": {
+      "type": "string"
+    },
+    "passed": {
+      "type": "boolean",
+      "default": false
+    },
+    "file_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "product_idea_id",
+    "test_type"
+  ]
+}

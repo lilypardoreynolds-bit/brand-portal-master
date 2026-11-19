@@ -1,0 +1,39 @@
+{
+  "name": "CustomerPersona",
+  "type": "object",
+  "properties": {
+    "persona_name": {
+      "type": "string"
+    },
+    "age": {
+      "type": "number"
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "goals": {
+      "type": "string"
+    },
+    "problems": {
+      "type": "string"
+    },
+    "buying_behavior": {
+      "type": "string"
+    },
+    "favorite_platforms": {
+      "type": "string"
+    },
+    "typical_day": {
+      "type": "string"
+    },
+    "avatar_url": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "persona_name"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "name": "PurchaseOrder",
+  "type": "object",
+  "properties": {
+    "po_number": {
+      "type": "string",
+      "description": "Purchase Order number"
+    },
+    "order_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expected_delivery": {
+      "type": "string",
+      "format": "date"
+    },
+    "supplier_id": {
+      "type": "string",
+      "description": "Linked supplier ID"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "line_items": {
+      "type": "array",
+      "description": "List of products in this PO",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number",
+            "default": 0
+          },
+          "unit_price": {
+            "type": "number",
+            "default": 0
+          }
+        }
+      }
+    },
+    "product_id": {
+      "type": "string",
+      "description": "Primary product ID (for backward compat)"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Primary product name (for backward compat)"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0,
+      "description": "Total quantity (for backward compat)"
+    },
+    "unit_price": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "import_duties": {
+      "type": "number",
+      "default": 0
+    },
+    "other_fees": {
+      "type": "number",
+      "default": 0
+    },
+    "packaging_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Packaging cost allocated across products"
+    },
+    "inspection_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Quality inspection cost allocated across products"
+    },
+    "prep_handling_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Prep / handling cost allocated across products"
+    },
+    "total_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Total PO cost"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Ordered",
+        "Paid",
+        "In Transit",
+        "Delivered",
+        "Cancelled"
+      ],
+      "default": "Draft"
+    },
+    "payment_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "tracking_number": {
+      "type": "string"
+    },
+    "carrier": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "order_date"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "name": "InventoryMovement",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "product_id": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "inventory_id": {
+      "type": "string",
+      "description": "Source inventory record ID"
+    },
+    "to_inventory_id": {
+      "type": "string",
+      "description": "Destination inventory record ID (for Transfer movements)"
+    },
+    "movement_type": {
+      "type": "string",
+      "enum": [
+        "Inbound",
+        "Outbound",
+        "Adjustment",
+        "Transfer"
+      ],
+      "description": "Inbound increases stock, Outbound decreases, Adjustment sets manually, Transfer moves between warehouses"
+    },
+    "from_warehouse": {
+      "type": "string",
+      "description": "Source warehouse name (for Transfer)"
+    },
+    "to_warehouse": {
+      "type": "string",
+      "description": "Destination warehouse name (for Transfer)"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Shipping cost for Transfer movements (e.g. sending to Amazon FBA)"
+    },
+    "label": {
+      "type": "string",
+      "description": "Label for outbound movements (e.g. channel, reason, customer)"
+    },
+    "label_file_url": {
+      "type": "string",
+      "description": "Attached file URL for the outbound label"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Order number, supplier name, or reason"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_id",
+    "product_name",
+    "movement_type",
+    "quantity",
+    "date"
+  ]
+}

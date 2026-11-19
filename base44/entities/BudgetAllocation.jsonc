@@ -1,0 +1,43 @@
+{
+  "name": "BudgetAllocation",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "bucket": {
+      "type": "string",
+      "enum": [
+        "marketing",
+        "cashflow"
+      ],
+      "description": "Which budget bucket this allocation comes from"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this money was used for"
+    },
+    "amount": {
+      "type": "number",
+      "default": 0
+    },
+    "category": {
+      "type": "string",
+      "description": "e.g. Ads, Content, Emergency Fund, Operations"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Invoice, receipt number or any reference"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "date",
+    "bucket",
+    "amount",
+    "description"
+  ]
+}

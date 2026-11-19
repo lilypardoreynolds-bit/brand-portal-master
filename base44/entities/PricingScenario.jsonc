@@ -1,0 +1,64 @@
+{
+  "name": "PricingScenario",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Scenario name"
+    },
+    "product_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Factory / product cost per unit"
+    },
+    "import_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Import / duties cost per unit"
+    },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Shipping cost per unit"
+    },
+    "import_extra_costs": {
+      "type": "number",
+      "default": 0,
+      "description": "Importation extra costs (labels, packaging, tags) \u2014 added to landed cost"
+    },
+    "ops_extra_costs": {
+      "type": "number",
+      "default": 0,
+      "description": "OPS extra costs (shipping box, tape, flyers) \u2014 applied only on shipping channels (Shopify)"
+    },
+    "amazon_fba_fee": {
+      "type": "number",
+      "default": 0,
+      "description": "Amazon FBA fee per unit"
+    },
+    "wholesale_price": {
+      "type": "number",
+      "default": 0,
+      "description": "Wholesale / dropship price per unit"
+    },
+    "retail_price": {
+      "type": "number",
+      "default": 0,
+      "description": "Target retail price"
+    },
+    "amazon_competitor_link": {
+      "type": "string",
+      "description": "Amazon competitor product link"
+    },
+    "alibaba_manufacturer_link": {
+      "type": "string",
+      "description": "Alibaba manufacturer product link"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

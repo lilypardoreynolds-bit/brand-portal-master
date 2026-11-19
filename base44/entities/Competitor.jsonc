@@ -1,0 +1,39 @@
+{
+  "name": "Competitor",
+  "type": "object",
+  "properties": {
+    "competitor_name": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "price_range": {
+      "type": "string"
+    },
+    "strengths": {
+      "type": "string"
+    },
+    "weaknesses": {
+      "type": "string"
+    },
+    "marketing_channels": {
+      "type": "string"
+    },
+    "product_differentiation": {
+      "type": "string"
+    },
+    "screenshot_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "competitor_name"
+  ]
+}

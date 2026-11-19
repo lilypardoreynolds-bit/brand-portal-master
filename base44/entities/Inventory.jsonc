@@ -1,0 +1,94 @@
+{
+  "name": "Inventory",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Linked Product ID"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "supplier_id": {
+      "type": "string",
+      "description": "Linked Supplier ID"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "measurements": {
+      "type": "string",
+      "description": "e.g. 10cm x 5cm x 3cm"
+    },
+    "barcode": {
+      "type": "string"
+    },
+    "warehouse": {
+      "type": "string",
+      "enum": [
+        "Own Warehouse",
+        "Amazon FBA",
+        "BelaSanta Miami",
+        "Other"
+      ],
+      "default": "Own Warehouse",
+      "description": "Storage location for this inventory record"
+    },
+    "warehouse_location": {
+      "type": "string",
+      "description": "Specific location or bin within the warehouse"
+    },
+    "on_hand": {
+      "type": "number",
+      "default": 0,
+      "description": "Stock on hand at this warehouse"
+    },
+    "reserved": {
+      "type": "number",
+      "default": 0,
+      "description": "Stock reserved for pending orders"
+    },
+    "available": {
+      "type": "number",
+      "default": 0,
+      "description": "Available stock (on hand - reserved)"
+    },
+    "current_stock": {
+      "type": "number",
+      "default": 0,
+      "description": "Legacy field for backward compatibility (alias for on_hand)"
+    },
+    "min_stock_level": {
+      "type": "number",
+      "default": 0,
+      "description": "Minimum stock level before alert"
+    },
+    "max_stock_level": {
+      "type": "number",
+      "default": 0
+    },
+    "unit_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Cost per unit for inventory value calculation"
+    },
+    "fba_shipping_cost_total": {
+      "type": "number",
+      "default": 0,
+      "description": "Accumulated shipping cost to send to this FBA location"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "product_name"
+  ]
+}

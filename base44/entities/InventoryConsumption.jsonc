@@ -1,0 +1,85 @@
+{
+  "name": "InventoryConsumption",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Linked Product ID"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "warehouse": {
+      "type": "string",
+      "description": "Warehouse the stock was consumed from"
+    },
+    "quantity": {
+      "type": "number",
+      "default": 0
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "Marketing Sample",
+        "Influencer Campaign",
+        "Product Giveaway",
+        "Internal Use",
+        "Damaged",
+        "Expired",
+        "Donation",
+        "Quality Testing",
+        "Return to Supplier",
+        "Inventory Adjustment"
+      ],
+      "default": "Internal Use",
+      "description": "Reason for consuming inventory"
+    },
+    "department": {
+      "type": "string",
+      "enum": [
+        "Marketing",
+        "Sales",
+        "Operations",
+        "Inventory",
+        "Finance",
+        "Product",
+        "Brand",
+        "Other"
+      ],
+      "default": "Operations"
+    },
+    "related_campaign": {
+      "type": "string",
+      "description": "Optional related marketing campaign name"
+    },
+    "landed_unit_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Landed unit cost at time of consumption"
+    },
+    "total_value": {
+      "type": "number",
+      "default": 0,
+      "description": "quantity x landed_unit_cost"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_by_name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_name",
+    "quantity",
+    "date",
+    "reason"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "Expense",
+  "type": "object",
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expense_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "vendor": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number",
+      "default": 0
+    },
+    "expense_type": {
+      "type": "string",
+      "enum": [
+        "Fixed",
+        "Variable"
+      ],
+      "default": "Variable"
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "Paid",
+        "Pending"
+      ],
+      "default": "Paid"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "attachment_url": {
+      "type": "string"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this expense recurs automatically"
+    },
+    "recurrence_frequency": {
+      "type": "string",
+      "enum": [
+        "Monthly",
+        "Annual"
+      ],
+      "default": "Monthly",
+      "description": "How often the expense recurs"
+    },
+    "recurrence_source_id": {
+      "type": "string",
+      "description": "ID of the template expense this was generated from"
+    },
+    "recurrence_month": {
+      "type": "string",
+      "description": "YYYY-MM key to prevent duplicate generation"
+    }
+  },
+  "required": [
+    "date",
+    "expense_name",
+    "amount"
+  ]
+}

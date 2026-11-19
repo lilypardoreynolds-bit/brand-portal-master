@@ -1,0 +1,70 @@
+{
+  "name": "BrandAsset",
+  "type": "object",
+  "properties": {
+    "asset_name": {
+      "type": "string",
+      "description": "Name of the asset"
+    },
+    "category": {
+      "type": "string",
+      "description": "Asset category"
+    },
+    "file_type": {
+      "type": "string",
+      "enum": [
+        "Image",
+        "Video",
+        "PDF",
+        "Design File",
+        "Other"
+      ],
+      "default": "Image"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Uploaded file URL"
+    },
+    "thumbnail_url": {
+      "type": "string",
+      "description": "Thumbnail image URL"
+    },
+    "related_product": {
+      "type": "string",
+      "description": "Related product name or ID"
+    },
+    "platform_usage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Where this asset is used"
+    },
+    "creator": {
+      "type": "string",
+      "description": "Creator or designer name"
+    },
+    "upload_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "asset_name",
+    "category",
+    "file_type"
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "name": "BrandOverview",
+  "type": "object",
+  "properties": {
+    "brand_name": {
+      "type": "string"
+    },
+    "tagline": {
+      "type": "string"
+    },
+    "mission_statement": {
+      "type": "string"
+    },
+    "vision": {
+      "type": "string"
+    },
+    "core_values": {
+      "type": "string"
+    },
+    "brand_story": {
+      "type": "string"
+    },
+    "brand_voice_description": {
+      "type": "string"
+    },
+    "key_messaging_pillars": {
+      "type": "string"
+    },
+    "words_to_use": {
+      "type": "string"
+    },
+    "words_to_avoid": {
+      "type": "string"
+    },
+    "brand_promise": {
+      "type": "string"
+    },
+    "main_problem_solved": {
+      "type": "string"
+    },
+    "unique_solution": {
+      "type": "string"
+    },
+    "key_benefits": {
+      "type": "string"
+    },
+    "why_choose_us": {
+      "type": "string"
+    },
+    "usp": {
+      "type": "string"
+    },
+    "market_category": {
+      "type": "string"
+    },
+    "price_positioning": {
+      "type": "string",
+      "enum": [
+        "Premium",
+        "Mid-Range",
+        "Budget"
+      ]
+    },
+    "brand_personality": {
+      "type": "string"
+    },
+    "tone_of_voice": {
+      "type": "string"
+    },
+    "brand_archetype": {
+      "type": "string",
+      "enum": [
+        "Hero",
+        "Explorer",
+        "Creator",
+        "Caregiver",
+        "Rebel",
+        "Sage",
+        "Innocent",
+        "Lover",
+        "Jester",
+        "Ruler",
+        "Everyman",
+        "Magician"
+      ]
+    },
+    "strategic_notes": {
+      "type": "string"
+    },
+    "brand_stage": {
+      "type": "string",
+      "enum": [
+        "Idea",
+        "Development",
+        "Launching",
+        "Scaling"
+      ],
+      "default": "Development"
+    },
+    "brand_health": {
+      "type": "string",
+      "enum": [
+        "On Track",
+        "Attention Needed",
+        "Critical"
+      ],
+      "default": "On Track"
+    },
+    "current_focus": {
+      "type": "string"
+    },
+    "this_week_progress": {
+      "type": "string"
+    },
+    "waiting_on_client": {
+      "type": "string"
+    },
+    "next_steps": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "brand_name"
+  ]
+}

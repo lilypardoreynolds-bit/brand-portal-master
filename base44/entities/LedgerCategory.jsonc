@@ -1,0 +1,30 @@
+{
+  "name": "LedgerCategory",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "investment",
+        "expense",
+        "revenue",
+        "adjustment"
+      ]
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false
+    },
+    "color": {
+      "type": "string",
+      "description": "Hex color for display"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

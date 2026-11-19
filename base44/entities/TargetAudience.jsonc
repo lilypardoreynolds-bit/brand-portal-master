@@ -1,0 +1,43 @@
+{
+  "name": "TargetAudience",
+  "type": "object",
+  "properties": {
+    "audience_name": {
+      "type": "string",
+      "description": "Label for this audience profile (e.g. Primary, Secondary)"
+    },
+    "primary_audience": {
+      "type": "string"
+    },
+    "age_range": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "income_level": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "interests": {
+      "type": "string"
+    },
+    "lifestyle": {
+      "type": "string"
+    },
+    "pain_points": {
+      "type": "string"
+    },
+    "buying_motivations": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "audience_name"
+  ]
+}

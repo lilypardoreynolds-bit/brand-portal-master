@@ -1,0 +1,61 @@
+{
+  "name": "Supplier",
+  "type": "object",
+  "properties": {
+    "supplier_name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "description": "Full business address"
+    },
+    "country": {
+      "type": "string"
+    },
+    "contact_person": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "profile_link": {
+      "type": "string",
+      "description": "Alibaba / supplier profile URL"
+    },
+    "license_document_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Uploaded license documents"
+    },
+    "minimum_order_quantity": {
+      "type": "number",
+      "default": 0
+    },
+    "price_per_unit": {
+      "type": "number",
+      "default": 0
+    },
+    "lead_time": {
+      "type": "string",
+      "description": "Lead time (e.g. 30 days)"
+    },
+    "product_idea_id": {
+      "type": "string",
+      "description": "Linked product idea ID"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "supplier_name"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "name": "WholesaleInvoice",
+  "type": "object",
+  "properties": {
+    "invoice_number": {
+      "type": "string"
+    },
+    "invoice_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Draft",
+        "Sent",
+        "Paid",
+        "Overdue",
+        "Cancelled"
+      ],
+      "default": "Draft"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "customer_type": {
+      "type": "string",
+      "enum": [
+        "Wholesale",
+        "Distributor",
+        "Retail Partner"
+      ],
+      "default": "Wholesale"
+    },
+    "customer_address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "zip_code": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "default": "United States"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "ship_to_name": {
+      "type": "string",
+      "description": "Ship to recipient name"
+    },
+    "ship_to_address": {
+      "type": "string",
+      "description": "Shipping street address"
+    },
+    "ship_to_city": {
+      "type": "string"
+    },
+    "ship_to_state": {
+      "type": "string"
+    },
+    "ship_to_zip": {
+      "type": "string"
+    },
+    "ship_to_country": {
+      "type": "string",
+      "default": "United States"
+    },
+    "ship_to_phone": {
+      "type": "string"
+    },
+    "tax_exempt": {
+      "type": "boolean",
+      "default": false
+    },
+    "resale_certificate_number": {
+      "type": "string"
+    },
+    "tax_rate": {
+      "type": "number",
+      "default": 6.5
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "discount_total": {
+      "type": "number",
+      "default": 0
+    },
+    "tax_amount": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping": {
+      "type": "number",
+      "default": 0
+    },
+    "total": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    },
+    "legal_footer": {
+      "type": "string",
+      "description": "Legal statement printed at bottom of invoice"
+    },
+    "inventory_deducted": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "invoice_number",
+    "invoice_date",
+    "customer_name"
+  ]
+}

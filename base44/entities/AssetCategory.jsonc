@@ -1,0 +1,28 @@
+{
+  "name": "AssetCategory",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name (lucide)"
+    },
+    "color": {
+      "type": "string",
+      "description": "Hex color for the category"
+    },
+    "description": {
+      "type": "string"
+    },
+    "is_default": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

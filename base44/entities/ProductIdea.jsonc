@@ -1,0 +1,49 @@
+{
+  "name": "ProductIdea",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product idea name"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category"
+    },
+    "description": {
+      "type": "string"
+    },
+    "problem_solved": {
+      "type": "string",
+      "description": "Problem the product solves"
+    },
+    "target_audience": {
+      "type": "string"
+    },
+    "strategic_fit": {
+      "type": "string",
+      "description": "Strategic fit with brand"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Idea",
+        "Research",
+        "Prototype",
+        "Testing",
+        "Production",
+        "Ready to Launch"
+      ],
+      "default": "Idea"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "name": "Influencer",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "Instagram",
+        "TikTok",
+        "YouTube",
+        "Pinterest",
+        "Multi-Platform"
+      ]
+    },
+    "followers": {
+      "type": "number",
+      "default": 0
+    },
+    "contact_email": {
+      "type": "string"
+    },
+    "commission_rate": {
+      "type": "number",
+      "default": 0
+    },
+    "partnership_status": {
+      "type": "string",
+      "enum": [
+        "Prospect",
+        "Outreach Sent",
+        "Negotiating",
+        "Active",
+        "Completed",
+        "Declined"
+      ],
+      "default": "Prospect"
+    },
+    "campaign_name": {
+      "type": "string"
+    },
+    "content_posted": {
+      "type": "string"
+    },
+    "sales_generated": {
+      "type": "number",
+      "default": 0
+    },
+    "commission_paid": {
+      "type": "number",
+      "default": 0
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "platform"
+  ]
+}

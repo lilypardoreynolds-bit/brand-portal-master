@@ -1,0 +1,38 @@
+{
+  "name": "SalesChannel",
+  "type": "object",
+  "properties": {
+    "channel_name": {
+      "type": "string"
+    },
+    "channel_type": {
+      "type": "string",
+      "enum": [
+        "Online Store",
+        "Marketplace",
+        "Wholesale",
+        "Direct Sales"
+      ]
+    },
+    "platform": {
+      "type": "string"
+    },
+    "website_link": {
+      "type": "string"
+    },
+    "contact_person": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "channel_name",
+    "channel_type"
+  ]
+}

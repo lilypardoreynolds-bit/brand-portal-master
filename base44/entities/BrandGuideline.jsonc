@@ -1,0 +1,57 @@
+{
+  "name": "BrandGuideline",
+  "type": "object",
+  "properties": {
+    "primary_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Primary brand colors (hex)"
+    },
+    "secondary_colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Secondary brand colors (hex)"
+    },
+    "typography_heading": {
+      "type": "string",
+      "description": "Heading font family"
+    },
+    "typography_body": {
+      "type": "string",
+      "description": "Body font family"
+    },
+    "typography_notes": {
+      "type": "string"
+    },
+    "logo_usage_rules": {
+      "type": "string"
+    },
+    "visual_style": {
+      "type": "string"
+    },
+    "brand_voice": {
+      "type": "string"
+    },
+    "dos": {
+      "type": "string",
+      "description": "What to do with the brand"
+    },
+    "donts": {
+      "type": "string",
+      "description": "What not to do with the brand"
+    },
+    "guideline_document_url": {
+      "type": "string",
+      "description": "Official brand guidelines PDF"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": []
+}

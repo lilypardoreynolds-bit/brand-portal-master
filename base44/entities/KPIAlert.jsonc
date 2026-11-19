@@ -1,0 +1,40 @@
+{
+  "name": "KPIAlert",
+  "type": "object",
+  "properties": {
+    "category": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "efficiency",
+        "customer",
+        "inventory"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "default": "medium"
+    },
+    "is_resolved": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "category",
+    "title",
+    "message"
+  ]
+}

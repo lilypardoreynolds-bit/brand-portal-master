@@ -1,0 +1,65 @@
+{
+  "name": "SupplierInvoice",
+  "type": "object",
+  "properties": {
+    "purchase_order_id": {
+      "type": "string",
+      "description": "Linked PO ID"
+    },
+    "po_number": {
+      "type": "string"
+    },
+    "invoice_number": {
+      "type": "string"
+    },
+    "invoice_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "supplier_name": {
+      "type": "string"
+    },
+    "subtotal": {
+      "type": "number",
+      "default": 0
+    },
+    "tax": {
+      "type": "number",
+      "default": 0
+    },
+    "total_amount": {
+      "type": "number",
+      "default": 0
+    },
+    "payment_status": {
+      "type": "string",
+      "enum": [
+        "Unpaid",
+        "Paid",
+        "Partial",
+        "Overdue"
+      ],
+      "default": "Unpaid"
+    },
+    "payment_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Uploaded invoice file"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "purchase_order_id",
+    "invoice_number",
+    "invoice_date"
+  ]
+}

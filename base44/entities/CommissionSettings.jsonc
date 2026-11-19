@@ -1,0 +1,31 @@
+{
+  "name": "CommissionSettings",
+  "type": "object",
+  "properties": {
+    "commission_rate": {
+      "type": "number",
+      "description": "Management commission rate as percentage (e.g., 5 for 5%)",
+      "default": 5
+    },
+    "calculation_base": {
+      "type": "string",
+      "enum": [
+        "Gross Sales"
+      ],
+      "default": "Gross Sales",
+      "description": "Base for commission calculation"
+    },
+    "payment_day": {
+      "type": "number",
+      "description": "Day of month for commission payment (1-31)",
+      "default": 10
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "commission_rate"
+  ]
+}

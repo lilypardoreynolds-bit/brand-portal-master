@@ -1,0 +1,50 @@
+{
+  "name": "TaxDocument",
+  "type": "object",
+  "properties": {
+    "document_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "Resale Certificate",
+        "Sales Tax Permit",
+        "Filed Tax Report",
+        "Confirmation Receipt",
+        "State Tax Letter",
+        "Other Tax Document"
+      ]
+    },
+    "state": {
+      "type": "string"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Expired",
+        "Pending Renewal"
+      ],
+      "default": "Active"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "file_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "document_name",
+    "category"
+  ]
+}

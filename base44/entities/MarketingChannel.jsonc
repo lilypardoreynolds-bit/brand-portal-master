@@ -1,0 +1,105 @@
+{
+  "name": "MarketingChannel",
+  "type": "object",
+  "properties": {
+    "channel_type": {
+      "type": "string",
+      "enum": [
+        "website",
+        "instagram",
+        "tiktok",
+        "youtube",
+        "pinterest"
+      ],
+      "description": "Marketing channel type"
+    },
+    "handle_or_url": {
+      "type": "string"
+    },
+    "platform": {
+      "type": "string"
+    },
+    "hosting_provider": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "seo_status": {
+      "type": "string",
+      "enum": [
+        "not_started",
+        "in_progress",
+        "optimized"
+      ],
+      "default": "not_started"
+    },
+    "launch_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "followers": {
+      "type": "number",
+      "default": 0
+    },
+    "engagement_rate": {
+      "type": "number",
+      "default": 0
+    },
+    "avg_views": {
+      "type": "number",
+      "default": 0
+    },
+    "monthly_views": {
+      "type": "number",
+      "default": 0
+    },
+    "subscribers": {
+      "type": "number",
+      "default": 0
+    },
+    "posting_frequency": {
+      "type": "string"
+    },
+    "video_frequency": {
+      "type": "string"
+    },
+    "content_strategy_notes": {
+      "type": "string"
+    },
+    "boards": {
+      "type": "string"
+    },
+    "asset_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "screenshot_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "checklist_homepage": {
+      "type": "boolean",
+      "default": false
+    },
+    "checklist_product_pages": {
+      "type": "boolean",
+      "default": false
+    },
+    "checklist_seo_setup": {
+      "type": "boolean",
+      "default": false
+    },
+    "checklist_analytics": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "channel_type"
+  ]
+}

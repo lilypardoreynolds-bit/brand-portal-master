@@ -1,0 +1,131 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "sku": {
+      "type": "string",
+      "description": "Stock keeping unit"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image_url": {
+      "type": "string"
+    },
+    "supplier_name": {
+      "type": "string",
+      "description": "Supplier name"
+    },
+    "supplier_address": {
+      "type": "string",
+      "description": "Full business address"
+    },
+    "supplier_country": {
+      "type": "string",
+      "description": "Supplier country"
+    },
+    "supplier_contact_person": {
+      "type": "string",
+      "description": "Contact person name"
+    },
+    "supplier_email": {
+      "type": "string",
+      "description": "Supplier email"
+    },
+    "supplier_phone": {
+      "type": "string",
+      "description": "Supplier phone"
+    },
+    "supplier_profile_link": {
+      "type": "string",
+      "description": "Alibaba or supplier profile URL"
+    },
+    "supplier_license_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Uploaded supplier license documents"
+    },
+    "manufacturing_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Manufacturing cost per unit"
+    },
+    "packaging_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "shipping_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Shipping cost per unit"
+    },
+    "import_duties_cost": {
+      "type": "number",
+      "default": 0,
+      "description": "Import / duties cost per unit"
+    },
+    "fulfillment_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "storage_cost": {
+      "type": "number",
+      "default": 0
+    },
+    "marketplace_fees": {
+      "type": "number",
+      "default": 0
+    },
+    "marketing_cost_per_unit": {
+      "type": "number",
+      "default": 0
+    },
+    "other_costs": {
+      "type": "number",
+      "default": 0,
+      "description": "Other operational costs"
+    },
+    "wholesale_price": {
+      "type": "number",
+      "default": 0
+    },
+    "retail_price": {
+      "type": "number",
+      "default": 0
+    },
+    "target_profit_margin": {
+      "type": "number",
+      "default": 30,
+      "description": "Target profit margin (%)"
+    },
+    "pricing_strategy_notes": {
+      "type": "string",
+      "description": "Pricing strategy notes, channel-specific pricing, discount floors, etc."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "draft"
+      ],
+      "default": "active"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
